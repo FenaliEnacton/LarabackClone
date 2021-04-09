@@ -31,6 +31,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
+      <StatusBar hidden />
       <Stack.Navigator
         screenOptions={{
           headerShown: false
