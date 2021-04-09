@@ -189,7 +189,10 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    // For animated GIF support
+    compile 'com.facebook.fresco:animated-gif:1.+'
 
+    implementation project(':lottie-react-native')
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
     }
