@@ -2,6 +2,7 @@ import React from 'react'
 import { View, Text, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Touchable, Image, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
 import LinearGradient from 'react-native-linear-gradient';
+import { ScrollView } from 'react-native-gesture-handler';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -15,14 +16,15 @@ const index = () => {
                     <Text style={styles.text}>SOUL'D</Text>
                     <Text style={{ fontSize: 10, color: 'white' }}>REFER & EARN $20+</Text>
                 </View>
-
-                <TouchableOpacity style={styles.searchView}>
-                    <View style={styles.searchIcon}>
-                        <Icon name={'search1'} size={20} color={'white'} />
-                    </View>
-                    <Text style={{ color: 'grey' }}>Search for black brands and products</Text>
-                </TouchableOpacity>
-
+                <View style={styles.searchView}>
+                    <TouchableOpacity style={styles.searchBar}>
+                        <View style={styles.searchIcon}>
+                            <Icon name={'search1'} size={20} color={'white'} />
+                        </View>
+                        <Text style={{ color: 'grey' }}>Search for black brands and products</Text>
+                    </TouchableOpacity>
+                </View>
+                {/* <ScrollView style={styles.scrollView}> */}
                 <View style={styles.topBrandView}>
                     <FlatList
                         data={data}
@@ -32,7 +34,7 @@ const index = () => {
                         renderItem={({ item, index }) => {
                             return (
                                 <View style={{ justifyContent: 'center' }}>
-                                    <TouchableOpacity style={styles.topBrand}>
+                                    <TouchableOpacity style={styles.topBrandCard}>
 
                                         <Image source={require("../../Images/brandLogo.jpg")} style={styles.branImg} />
 
@@ -52,6 +54,48 @@ const index = () => {
 
                     />
                 </View>
+
+                <View style={styles.midImgView}>
+                    <ImageBackground source={require("../../Images/homeMid.jpg")} style={styles.midImg} imageStyle={{ opacity: 0.5 }}>
+                        <Text style={[styles.text, { fontSize: 40, fontStyle: 'italic', marginLeft: -80 }]}>beautiful</Text>
+                        <Text style={[styles.text, { fontSize: 40, fontStyle: 'italic', marginTop: -15, marginLeft: 60 }]}>roots</Text>
+                    </ImageBackground>
+                </View>
+
+                <View style={styles.productHeading}>
+                    <Text style={{ color: 'white', fontWeight: '700' }}>Hair products for black women</Text>
+                    <TouchableOpacity style={{ borderBottomColor: 'white', borderBottomWidth: 1 }}>
+                        <Text style={{ color: 'white' }}>View All</Text>
+                    </TouchableOpacity>
+                </View>
+                <View style={styles.productView}>
+                    <FlatList
+                        data={data}
+                        keyExtractor={(item, index) => index.toString()}
+                        horizontal
+                        renderItem={({ item, index }) => {
+                            return (
+                                <View >
+                                    <View style={styles.productCard}>
+                                        <Image source={require("../../Images/productImg.jpg")} style={[styles.midImg, { borderRadius: 15 }]} />
+                                    </View>
+                                    <TouchableOpacity onPress={() => console.log("object")} style={{ marginVertical: 8 }}>
+                                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00ff69', '#00ffda']} style={styles.buttons}>
+                                            <Text style={styles.buttonText} >10% Cash Back</Text>
+                                        </LinearGradient>
+                                    </TouchableOpacity>
+                                    <View>
+                                        <Text style={styles.text}>Title</Text>
+                                        <Text style={styles.text}>Description</Text>
+                                        <Text style={styles.text}>Price</Text>
+                                    </View>
+                                </View>
+
+                            )
+                        }}
+                    />
+                </View>
+                {/* </ScrollView> */}
             </View>
 
         </ImageBackground>
@@ -61,6 +105,10 @@ const styles = StyleSheet.create({
     container: {
         marginTop: (height * 3) / 100,
         marginHorizontal: (width * 4) / 100,
+    },
+    scrollView: {
+        //position: 'absolute',
+        //backgroundColor: 'pink'
     },
     heading: {
         flexDirection: 'row',
@@ -73,6 +121,9 @@ const styles = StyleSheet.create({
         fontWeight: 'bold'
     },
     searchView: {
+        height: (height * 9) / 100,
+    },
+    searchBar: {
         height: (height * 5) / 100,
         borderColor: 'grey',
         borderWidth: 1,
@@ -87,12 +138,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     topBrandView: {
-        height: 200,
+        height: 150,
+        marginBottom: 20,
         width: width,
         justifyContent: 'center',
         //backgroundColor: 'pink'
     },
-    topBrand: {
+    topBrandCard: {
         height: 150,
         width: (width * 85) / 100,
         backgroundColor: 'white',
@@ -115,17 +167,47 @@ const styles = StyleSheet.create({
         //backgroundColor: 'pink'
     },
     buttons: {
-        //alignSelf: "center",
-        height: 16,
-        width: 100,
+        height: 17,
+        width: 80,
         borderRadius: 5,
         justifyContent: "center",
-        //marginTop: 30
+
     },
     buttonText: {
         textAlign: "center",
         fontSize: 10,
-        fontWeight: "700"
+        fontWeight: "700",
     },
+    midImgView: {
+        height: 280,
+        width: width,
+        marginLeft: -((width * 4) / 100),
+    },
+    midImg: {
+        height: '100%',
+        width: '100%',
+        backgroundColor: 'rgb(60,60,60)',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    productHeading: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: -60,
+    },
+    productView: {
+        height: 260,
+        width: width,
+        marginTop: 10,
+        //backgroundColor: 'green',
+
+    },
+    productCard: {
+        height: 165,
+        width: (width * 37) / 100,
+        borderRadius: 10,
+        backgroundColor: 'white',
+        marginRight: 10
+    }
 })
 export default index

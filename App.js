@@ -18,6 +18,7 @@ import {
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+// import TabNavigation from './src/Components/tabNavigation'
 
 import Intro from './src/Screens/Intro'
 import SocialLogin from './src/Screens/SocialLogin';
