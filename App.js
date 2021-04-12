@@ -18,7 +18,7 @@ import {
 } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-// import TabNavigation from './src/Components/tabNavigation'
+import TabNavigation from './src/Components/tabNavigation'
 
 import Intro from './src/Screens/Intro'
 import SocialLogin from './src/Screens/SocialLogin';
@@ -45,7 +45,7 @@ const App = () => {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="FavBrand" component={FavBrand} />
         <Stack.Screen name="Success" component={Success} />
-        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Home" component={TabNavigation} />
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -50,7 +50,7 @@ const Intro = ({ navigation }) => {
                 <TouchableOpacity style={[styles.buttons, { backgroundColor: 'pink' }]} onPress={() => navigation.navigate('SocialLogin')} >
                     <Text style={styles.buttonText} >GET STARTED</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.buttons} >
+                <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('Home')}>
                     <Text style={[styles.buttonText, { color: 'white' }]} >LOG IN</Text>
                 </TouchableOpacity>
             </View>

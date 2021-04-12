@@ -1,8 +1,8 @@
 import React from 'react'
-import { View, Text, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Touchable, Image, FlatList } from 'react-native'
+import { View, Text, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
 import LinearGradient from 'react-native-linear-gradient';
-import { ScrollView } from 'react-native-gesture-handler';
+
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -12,6 +12,7 @@ const index = () => {
     return (
         <ImageBackground source={require("../../Images/Login.jpg")} style={{ flex: 1, width: width, height: height, }}>
             <View style={styles.container}>
+
                 <View style={styles.heading}>
                     <Text style={styles.text}>SOUL'D</Text>
                     <Text style={{ fontSize: 10, color: 'white' }}>REFER & EARN $20+</Text>
@@ -24,7 +25,8 @@ const index = () => {
                         <Text style={{ color: 'grey' }}>Search for black brands and products</Text>
                     </TouchableOpacity>
                 </View>
-                {/* <ScrollView style={styles.scrollView}> */}
+
+
                 <View style={styles.topBrandView}>
                     <FlatList
                         data={data}
@@ -105,10 +107,6 @@ const styles = StyleSheet.create({
     container: {
         marginTop: (height * 3) / 100,
         marginHorizontal: (width * 4) / 100,
-    },
-    scrollView: {
-        //position: 'absolute',
-        //backgroundColor: 'pink'
     },
     heading: {
         flexDirection: 'row',
@@ -203,7 +201,7 @@ const styles = StyleSheet.create({
 
     },
     productCard: {
-        height: 165,
+        height: 150,
         width: (width * 37) / 100,
         borderRadius: 10,
         backgroundColor: 'white',
