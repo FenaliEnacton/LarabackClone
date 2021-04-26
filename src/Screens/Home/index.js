@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native'
+import { View, Text, ScrollView, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -25,79 +25,107 @@ const index = () => {
                         <Text style={{ color: 'grey' }}>Search for black brands and products</Text>
                     </TouchableOpacity>
                 </View>
+            </View>
+            <View style={{ flex: 1 }}>
+                <ScrollView>
+                    <View style={styles.topBrandView}>
+                        <FlatList
+                            data={data}
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            keyExtractor={(item, index) => index.toString()}
+                            renderItem={({ item, index }) => {
+                                return (
+                                    <View style={{ justifyContent: 'center' }}>
+                                        <TouchableOpacity style={styles.topBrandCard}>
 
+                                            <Image source={require("../../Images/brandLogo.jpg")} style={styles.branImg} />
 
-                <View style={styles.topBrandView}>
-                    <FlatList
-                        data={data}
-                        horizontal
-                        showsHorizontalScrollIndicator={false}
-                        keyExtractor={(item, index) => index.toString()}
-                        renderItem={({ item, index }) => {
-                            return (
-                                <View style={{ justifyContent: 'center' }}>
-                                    <TouchableOpacity style={styles.topBrandCard}>
+                                            <View style={styles.brandTextView}>
+                                                <Text style={{ fontWeight: 'bold', fontSize: 18 }}>RAYCON</Text>
+                                                <Text style={{ fontSize: 13, color: 'grey' }}>Extra cashback on the new Performer Earbugs</Text>
+                                                <TouchableOpacity onPress={() => console.log("object")} >
+                                                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00ff69', '#00ffda']} style={styles.buttons}>
+                                                        <Text style={styles.buttonText} >10% Cash Back</Text>
+                                                    </LinearGradient>
+                                                </TouchableOpacity>
+                                            </View>
+                                        </TouchableOpacity>
+                                    </View>
+                                )
+                            }}
 
-                                        <Image source={require("../../Images/brandLogo.jpg")} style={styles.branImg} />
+                        />
+                    </View>
 
-                                        <View style={styles.brandTextView}>
-                                            <Text style={{ fontWeight: 'bold', fontSize: 18 }}>RAYCON</Text>
-                                            <Text style={{ fontSize: 13, color: 'grey' }}>Extra cashback on the new Performer Earbugs</Text>
-                                            <TouchableOpacity onPress={() => console.log("object")} >
-                                                <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00ff69', '#00ffda']} style={styles.buttons}>
-                                                    <Text style={styles.buttonText} >10% Cash Back</Text>
-                                                </LinearGradient>
-                                            </TouchableOpacity>
+                    <View style={styles.midImgView}>
+                        <ImageBackground source={require("../../Images/homeMid.jpg")} style={styles.midImg} imageStyle={{ opacity: 0.5 }}>
+                            <Text style={[styles.text, { fontSize: 40, fontStyle: 'italic', marginLeft: -80 }]}>beautiful</Text>
+                            <Text style={[styles.text, { fontSize: 40, fontStyle: 'italic', marginTop: -15, marginLeft: 60 }]}>roots</Text>
+                        </ImageBackground>
+                    </View>
+
+                    <View style={[styles.productHeading, { marginTop: -60 }]}>
+                        <Text style={{ color: 'white', fontWeight: '700' }}>Hair products for black women</Text>
+                        <TouchableOpacity style={{ borderBottomColor: 'white', borderBottomWidth: 1 }}>
+                            <Text style={{ color: 'white' }}>View All</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.productView}>
+                        <FlatList
+                            data={data}
+                            keyExtractor={(item, index) => index.toString()}
+                            horizontal
+                            renderItem={({ item, index }) => {
+                                return (
+                                    <View >
+                                        <View style={styles.productCard}>
+                                            <Image source={require("../../Images/productImg.jpg")} style={[styles.midImg, { borderRadius: 15 }]} />
                                         </View>
-                                    </TouchableOpacity>
-                                </View>
-                            )
-                        }}
-
-                    />
-                </View>
-
-                <View style={styles.midImgView}>
-                    <ImageBackground source={require("../../Images/homeMid.jpg")} style={styles.midImg} imageStyle={{ opacity: 0.5 }}>
-                        <Text style={[styles.text, { fontSize: 40, fontStyle: 'italic', marginLeft: -80 }]}>beautiful</Text>
-                        <Text style={[styles.text, { fontSize: 40, fontStyle: 'italic', marginTop: -15, marginLeft: 60 }]}>roots</Text>
-                    </ImageBackground>
-                </View>
-
-                <View style={styles.productHeading}>
-                    <Text style={{ color: 'white', fontWeight: '700' }}>Hair products for black women</Text>
-                    <TouchableOpacity style={{ borderBottomColor: 'white', borderBottomWidth: 1 }}>
-                        <Text style={{ color: 'white' }}>View All</Text>
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.productView}>
-                    <FlatList
-                        data={data}
-                        keyExtractor={(item, index) => index.toString()}
-                        horizontal
-                        renderItem={({ item, index }) => {
-                            return (
-                                <View >
-                                    <View style={styles.productCard}>
-                                        <Image source={require("../../Images/productImg.jpg")} style={[styles.midImg, { borderRadius: 15 }]} />
+                                        <TouchableOpacity onPress={() => console.log("object")} style={{ marginVertical: 8 }}>
+                                            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00ff69', '#00ffda']} style={styles.buttons}>
+                                                <Text style={styles.buttonText} >10% Cash Back</Text>
+                                            </LinearGradient>
+                                        </TouchableOpacity>
+                                        <View>
+                                            <Text style={styles.text}>Title</Text>
+                                            <Text style={styles.text}>Description</Text>
+                                            <Text style={styles.text}>Price</Text>
+                                        </View>
                                     </View>
-                                    <TouchableOpacity onPress={() => console.log("object")} style={{ marginVertical: 8 }}>
-                                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00ff69', '#00ffda']} style={styles.buttons}>
-                                            <Text style={styles.buttonText} >10% Cash Back</Text>
-                                        </LinearGradient>
-                                    </TouchableOpacity>
+
+                                )
+                            }}
+                        />
+                    </View>
+
+                    <View style={[styles.productHeading, { marginTop: 20 }]}>
+                        <Text style={{ color: 'white', fontWeight: '700' }}>Most Popular Brands</Text>
+                        <TouchableOpacity style={{ borderBottomColor: 'white', borderBottomWidth: 1 }}>
+                            <Text style={{ color: 'white' }}>View All</Text>
+                        </TouchableOpacity>
+                    </View>
+                    <View style={styles.popularBrandView}>
+                        <FlatList
+                            data={data}
+                            keyExtractor={(item, index) => index.toString()}
+                            horizontal
+                            showsHorizontalScrollIndicator={false}
+                            renderItem={({ item, index }) => {
+                                return (
                                     <View>
-                                        <Text style={styles.text}>Title</Text>
-                                        <Text style={styles.text}>Description</Text>
-                                        <Text style={styles.text}>Price</Text>
-                                    </View>
-                                </View>
+                                        <TouchableOpacity style={styles.popularBrandIcon}>
 
-                            )
-                        }}
-                    />
-                </View>
-                {/* </ScrollView> */}
+                                        </TouchableOpacity>
+                                    </View>
+                                )
+                            }}
+                        />
+                    </View>
+                    <Text>Hello</Text>
+                    <Text>Hello</Text>
+                    <Text>Hello</Text>
+                </ScrollView>
             </View>
 
         </ImageBackground>
@@ -106,7 +134,7 @@ const index = () => {
 const styles = StyleSheet.create({
     container: {
         marginTop: (height * 3) / 100,
-        marginHorizontal: (width * 4) / 100,
+        paddingHorizontal: (width * 4) / 100,
     },
     heading: {
         flexDirection: 'row',
@@ -140,6 +168,7 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         width: width,
         justifyContent: 'center',
+        marginLeft: (width * 4) / 100
         //backgroundColor: 'pink'
     },
     topBrandCard: {
@@ -179,7 +208,6 @@ const styles = StyleSheet.create({
     midImgView: {
         height: 280,
         width: width,
-        marginLeft: -((width * 4) / 100),
     },
     midImg: {
         height: '100%',
@@ -191,12 +219,13 @@ const styles = StyleSheet.create({
     productHeading: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        marginTop: -60,
+        marginHorizontal: (width * 4) / 100
     },
     productView: {
         height: 260,
         width: width,
         marginTop: 10,
+        marginLeft: (width * 4) / 100,
         //backgroundColor: 'green',
 
     },
@@ -206,6 +235,19 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         backgroundColor: 'white',
         marginRight: 10
+    },
+    popularBrandView: {
+        height: 100,
+        width: width,
+        marginLeft: (width * 4) / 100,
+        marginTop: 15
+    },
+    popularBrandIcon: {
+        height: 80,
+        width: 80,
+        borderRadius: 40,
+        backgroundColor: 'pink',
+        marginRight: 15
     }
 })
 export default index

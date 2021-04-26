@@ -11,7 +11,7 @@ const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
 const NavBar = ({ navigation, state }) => {
-    console.log("state : ", state)
+    //console.log("state : ", state)
     return (
         <View style={styles.container}>
             <BlurView
@@ -27,7 +27,7 @@ const NavBar = ({ navigation, state }) => {
                     <Text style={styles.text}>Home</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.iconView} onPress={() => navigation.navigate('Login')}>
+                <TouchableOpacity style={styles.iconView} onPress={() => navigation.navigate('Search')}>
                     {state.index == 1 ? <Icon name={"search1"} size={22} color={'white'} /> : <Icon name={"search1"} size={22} color={'grey'} />}
                     <Text style={styles.text}>Search</Text>
                 </TouchableOpacity>

@@ -39,7 +39,7 @@ const index = ({ navigation }) => {
                                     {icon.map((data) => {
                                         if (data == index)
                                             return <TouchableOpacity style={styles.tick} onPress={() => removeSelection(index)}>
-                                                <Image source={require("../../Images/greentick.png")} style={styles.imgTick} />
+                                                <Image source={require("../../Images/greentick.jpg")} style={styles.imgTick} />
                                             </TouchableOpacity>
                                     })}
                                 </TouchableOpacity>

@@ -190,7 +190,7 @@ dependencies {
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
     // For animated GIF support
-    compile 'com.facebook.fresco:animated-gif:1.+'
+    //compile 'com.facebook.fresco:animated-gif:1.+'
 
     implementation project(':lottie-react-native')
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {

@@ -32,37 +32,37 @@ const SocialLogin = ({ navigation }) => {
             </View>
 
 
-            <View style={styles.buttonView}>
-                <TouchableOpacity style={[styles.loginbutton, { backgroundColor: 'black', borderWidth: 1, borderColor: "grey" }]}>
-                    <View style={styles.icon} >
-                        <Icon name="apple1" size={17} color="white" />
-                    </View>
-                    <View style={styles.buttonTextView}>
-                        <Text style={[styles.buttonText, { color: 'white' }]}>Continue with Apple</Text>
-                    </View>
-                </TouchableOpacity>
+            {/* <View style={styles.buttonView}> */}
+            <TouchableOpacity style={[styles.loginbutton, { backgroundColor: 'black', borderWidth: 1, borderColor: "grey" }]}>
+                <View style={styles.icon} >
+                    <Icon name="apple1" size={17} color="white" />
+                </View>
+                <View style={styles.buttonTextView}>
+                    <Text style={[styles.buttonText, { color: 'white' }]}>Continue with Apple</Text>
+                </View>
+            </TouchableOpacity>
 
-                <TouchableOpacity style={[styles.loginbutton, { backgroundColor: '#0288d1' }]}>
-                    <View style={styles.icon} >
-                        <FbIcon name="facebook" size={20} color="white" />
-                    </View>
-                    <View style={styles.buttonTextView}>
-                        <Text style={[styles.buttonText, { color: 'white' }]}>Continue with Facebook</Text>
-                    </View>
-                </TouchableOpacity>
+            <TouchableOpacity style={[styles.loginbutton, { backgroundColor: '#0288d1' }]}>
+                <View style={styles.icon} >
+                    <FbIcon name="facebook" size={20} color="white" />
+                </View>
+                <View style={styles.buttonTextView}>
+                    <Text style={[styles.buttonText, { color: 'white' }]}>Continue with Facebook</Text>
+                </View>
+            </TouchableOpacity>
 
-                <TouchableOpacity style={styles.loginbutton}>
-                    <View style={styles.icon} >
-                        <Icon name="google" size={17} color="black" />
-                    </View>
-                    <View style={styles.buttonTextView}>
-                        <Text style={styles.buttonText}>Continue with Google</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
+            <TouchableOpacity style={styles.loginbutton}>
+                <View style={styles.icon} >
+                    <Icon name="google" size={17} color="black" />
+                </View>
+                <View style={styles.buttonTextView}>
+                    <Text style={styles.buttonText}>Continue with Google</Text>
+                </View>
+            </TouchableOpacity>
+            {/* </View> */}
 
 
-            <View style={{ alignSelf: 'center', height: 20, flexDirection: 'row' }}>
+            <View style={styles.alreadyAccountView}>
                 <Text style={{ color: 'grey', fontSize: 12 }}>Already have an account ? </Text>
                 <TouchableOpacity onPress={() => navigation.navigate("Login")}>
                     <Text style={{ color: 'white' }}>Log in</Text>
@@ -74,17 +74,19 @@ const SocialLogin = ({ navigation }) => {
 }
 const styles = StyleSheet.create({
     EmailView: {
-        height: (height * 15) / 100,
-        //backgroundColor: 'pink',
-        justifyContent: 'center',
-        alignItems: 'center'
+        //height: (height * 15) / 100,
+        // backgroundColor: 'pink',
+        alignItems: 'center',
+        marginVertical: 15
     },
     loginbutton: {
-        height: (height * 5) / 100,
+        height: 45,
         width: (width * 85) / 100,
-        borderRadius: 20,
+        borderRadius: 22,
         backgroundColor: 'white',
         flexDirection: 'row',
+        marginTop: 15,
+        alignSelf: 'center'
         //alignItems: 'center',
         //justifyContent: 'center'
     },
@@ -122,8 +124,15 @@ const styles = StyleSheet.create({
     buttonView: {
         alignSelf: 'center',
         marginTop: 15,
-        height: (height * 25) / 100,
-        justifyContent: 'space-evenly'
+        //height: (height * 25) / 100,
+        justifyContent: 'center',
+        backgroundColor: 'red'
+    },
+    alreadyAccountView: {
+        alignSelf: 'center',
+        height: 20,
+        flexDirection: 'row',
+        marginTop: 15
     }
 })
 export default SocialLogin
