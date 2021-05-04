@@ -1,15 +1,17 @@
 import React from 'react'
 import { View, Text, ScrollView, TextInput, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
+import LinearGradient from 'react-native-linear-gradient';
+import { AppImages } from '@assets/Images';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-const index = () => {
+const index = ({ navigation }) => {
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
     return (
-        <ImageBackground source={require("../../Images/Login.jpg")} style={{ flex: 1, width: width, height: height, }}>
+        <ImageBackground source={AppImages.app_bg} style={{ flex: 1, width: width, height: height, }}>
             <View style={styles.searchView}>
                 <View style={styles.searchBar}>
                     <TouchableOpacity style={styles.searchIcon}>
@@ -41,8 +43,8 @@ const index = () => {
                             renderItem={({ item, index }) => {
                                 return (
                                     <View style={{ justifyContent: 'center' }}>
-                                        <TouchableOpacity style={styles.popularBrandIcon}>
-
+                                        <TouchableOpacity style={styles.popularBrandIcon} onPress={() => { navigation.navigate('StoreInfo') }}>
+                                            <Image source={AppImages.cookieLogo} style={styles.popularBrandIcon} />
                                         </TouchableOpacity>
                                     </View>
                                 )
@@ -69,7 +71,11 @@ const index = () => {
                                 <View >
                                     <View style={{ flexDirection: "row" }} >
                                         <View style={[styles.categoryCard]}>
-                                            <Text style={{ textAlign: "center" }} >{index}</Text>
+                                            <ImageBackground borderRadius={10} source={AppImages.homeBrandLogo} style={styles.brandImg} >
+                                                <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#rgba(0,255,105,0.5)', 'rgba(18,106,222,0.5)']} style={[styles.categoryCard, { position: 'absolute', opacity: 0.5 }]}>
+                                                </LinearGradient>
+                                                <Text>Hair Care</Text>
+                                            </ImageBackground>
                                         </View>
                                         <View style={{ padding: (width * 2) / 100 }}></View>
                                     </View>
@@ -104,9 +110,10 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     popularBrandView: {
-        height: 190,
+        height: 150,
         justifyContent: 'center',
-        //backgroundColor: 'green'
+        //backgroundColor: 'green',
+        marginTop: 10
     },
     productHeading: {
         flexDirection: 'row',
@@ -124,7 +131,7 @@ const styles = StyleSheet.create({
         height: 80,
         width: 80,
         borderRadius: 40,
-        backgroundColor: 'pink',
+        // backgroundColor: 'pink',
         marginRight: 15
     },
     categoryCard: {
@@ -133,7 +140,17 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         marginBottom: (width * 4) / 100,
         borderRadius: 10,
-        justifyContent: "space-evenly",
+        // justifyContent: "space-evenly",
+    },
+    brandImg: {
+        height: 75,
+        width: (width * 44) / 100,
+        //resizeMode: 'cover',
+        marginBottom: (width * 4) / 100,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+
     }
 })
 export default index

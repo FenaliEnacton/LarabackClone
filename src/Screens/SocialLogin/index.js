@@ -3,6 +3,7 @@ import { View, Text, ImageBackground, Dimensions, StyleSheet, TouchableOpacity }
 import LoginHeader from '../../Components/loginHeader'
 import Icon from 'react-native-vector-icons/AntDesign';
 import FbIcon from 'react-native-vector-icons/MaterialIcons';
+import { AppImages } from '@assets/Images';
 
 
 const height = Dimensions.get('window').height;
@@ -10,11 +11,11 @@ const width = Dimensions.get('window').width;
 const SocialLogin = ({ navigation }) => {
     return (
         // <View>
-        <ImageBackground source={require("../../Images/Login.jpg")} style={{ flex: 1, width: width, height: height, }}>
+        <ImageBackground source={AppImages.app_bg} style={{ flex: 1, width: width, height: height, }}>
             <LoginHeader step={"STEP 1"} heading={"Create an account"} desc={"Create an account to continue!"} />
 
             <View style={styles.EmailView}>
-                <TouchableOpacity style={styles.loginbutton} >
+                <TouchableOpacity style={styles.loginbutton} onPress={() => { navigation.navigate('Login') }}>
                     <View style={styles.icon} >
                         <Icon name="mail" size={17} color="black" />
                     </View>
@@ -92,7 +93,7 @@ const styles = StyleSheet.create({
     },
     buttonTextView: {
         justifyContent: 'center',
-        flex: 1
+        flex: 1,
     },
     buttonText: {
         //justifyContent: 'center',
