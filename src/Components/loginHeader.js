@@ -11,7 +11,7 @@ const LoginHeader = ({ step, heading, desc }) => {
         <View style={styles.container}>
             <Text style={{ color: '#28c979', fontWeight: 'bold' }}>{step}</Text>
             <Text style={styles.heading}>{heading}</Text>
-            <Text style={{ color: 'white' }}>{desc}</Text>
+            <Text style={styles.desc}>{desc}</Text>
         </View>
 
     )
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
         height: HeaderHeight,
         justifyContent: 'space-evenly',
         alignItems: 'center',
-        marginTop: 42,
+        marginTop: 50,
         //backgroundColor: 'pink'
     },
     heading: {
@@ -33,5 +33,11 @@ const styles = StyleSheet.create({
         marginHorizontal: 20
 
     },
+    desc: {
+        marginHorizontal: 60,
+        color: 'white',
+        textAlign: 'center',
+        marginTop: 5
+    }
 })
 export default LoginHeader

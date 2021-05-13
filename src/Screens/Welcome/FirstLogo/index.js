@@ -34,7 +34,7 @@ const FirstLogo = () => {
                                         index == 0 || index == (numColumns * 2) ? { marginLeft: 30 } : { marginLeft: 20 }} >
                                         <View style={[styles.logoView,
                                         index == numColumns ? { marginLeft: -20 } : null]} >
-                                            <Text>{item}</Text>
+                                            {/* <Text>{item}</Text> */}
                                         </View>
                                     </View>
                                 </View>

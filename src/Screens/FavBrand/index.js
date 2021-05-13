@@ -3,7 +3,6 @@ import { View, Text, ImageBackground, Dimensions, StyleSheet, FlatList, Touchabl
 import LoginHeader from '../../Components/loginHeader'
 import { BlurView } from "@react-native-community/blur";
 import Icon from 'react-native-vector-icons/Feather';
-import Button from '../../Components/Button'
 import LinearButton from '../../Components/LinearButton'
 import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';

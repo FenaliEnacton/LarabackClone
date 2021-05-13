@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { View, Text, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, TextInput } from 'react-native'
-import LoginHeader from '../../Components/loginHeader'
+import LoginHeader from '../../../Components/loginHeader'
 import { translate } from '@translations';
 import { Formik, ErrorMessage } from 'formik';
 import { string, object, date } from 'yup';
-import TextBox from '../../Components/TextBox'
-import Button from '../../Components/LinearButton'
+import TextBox from '../../../Components/TextBox'
+import Button from '../../../Components/LinearButton'
 import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
 import Icon from 'react-native-vector-icons/Feather';
@@ -14,8 +14,6 @@ const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
 const SignUp = ({ navigation }) => {
-    const [state, setstate] = useState('')
-    const [err, seterr] = useState('')
 
     const FormSchema = object().shape({
         firstName: string().trim().required(translate('required_field')),
@@ -35,8 +33,8 @@ const SignUp = ({ navigation }) => {
         navigation.navigate('FavBrand')
     }
     return (
-        <ImageBackground source={AppImages.app_bg} style={{ flex: 1, width: width, height: height, }}>
-            <LoginHeader step={"STEP 1"} heading={"Create an account"} desc={"Create an account to continue!"} />
+        <ImageBackground source={AppImages.app_bg} style={styles.bg_img}>
+            <LoginHeader step={"STEP 1"} heading={translate('createAccount')} desc={translate('createAccountToContinue')} />
             <View style={{ marginTop: 30, alignItems: 'center' }}>
                 <Formik
                     initialValues={{ firstName: '', Email: '', Password: '' }}
@@ -49,7 +47,7 @@ const SignUp = ({ navigation }) => {
                                 containerStyle={!errors.firstName && values.firstName
                                     ? { borderColor: Theme.COLORS.primary, borderWidth: 0.5 }
                                     : null}
-                                placeholder={'First Name'}
+                                placeholder={translate('firstName')}
                                 value={values.firstName}
                                 onChangeText={handleChange('firstName')}
                             >
@@ -65,7 +63,7 @@ const SignUp = ({ navigation }) => {
                                 containerStyle={!errors.Email && values.Email
                                     ? { borderColor: Theme.COLORS.primary, borderWidth: 0.5 }
                                     : null}
-                                placeholder={'Email'}
+                                placeholder={translate('email')}
                                 value={values.Email}
                                 onChangeText={handleChange('Email')}
                             >
@@ -81,7 +79,7 @@ const SignUp = ({ navigation }) => {
                                 containerStyle={!errors.Password && values.Password
                                     ? { borderColor: Theme.COLORS.primary, borderWidth: 0.5 }
                                     : null}
-                                placeholder={'Password'}
+                                placeholder={translate('password')}
                                 value={values.Password}
                                 onChangeText={handleChange('Password')}
                             >
@@ -99,13 +97,13 @@ const SignUp = ({ navigation }) => {
                                     ? false
                                     : true}
                             >
-                                <Text>SIGN UP</Text>
+                                <Text style={styles.signupText}>{translate('signUp')}</Text>
                             </Button>
                         </View>
                     )}
                 </Formik>
-                <View style={{ width: (width * 80) / 100, marginTop: 20 }}>
-                    <Text style={{ textAlign: 'center', color: Theme.COLORS.grey }}>By tapping continuing, you agree our terms & Conditions and privacy policy</Text>
+                <View style={styles.policyView}>
+                    <Text style={styles.policyText}>{translate('privacyConfirmation')}</Text>
                 </View>
             </View>
         </ImageBackground>
@@ -113,13 +111,10 @@ const SignUp = ({ navigation }) => {
 }
 
 const styles = StyleSheet.create({
-    buttonTextView: {
-        justifyContent: 'center',
-        flex: 1
-    },
-    buttonText: {
-        alignSelf: 'center',
-        fontSize: 12
+    bg_img: {
+        flex: 1,
+        width: width,
+        height: height,
     },
     inputText: {
         height: 45,
@@ -152,6 +147,18 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         color: Theme.COLORS.white,
         backgroundColor: 'rgba(60, 60, 60, 0.5)',
+    },
+    signupText: {
+        ...Theme.fontStyles.h3Bold
+    },
+    policyText: {
+        ...Theme.fontStyles.h4Regular,
+        textAlign: 'center',
+        color: Theme.COLORS.grey
+    },
+    policyView: {
+        width: (width * 75) / 100,
+        marginTop: 15
     }
 })
 export default SignUp

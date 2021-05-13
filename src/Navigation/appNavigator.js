@@ -9,14 +9,17 @@ import { CommonActions } from '@react-navigation/native';
 import NavBar from '../Components/navBar';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Welcome from '../Screens/Welcome'
-import SocialLogin from '../Screens/SocialLogin';
-import SignUp from '../Screens/SignUp';
+import SocialLogin from '../Screens/Auth/SocialLogin';
+import Login from '../Screens/Auth/index'
+import ForgetPassword from '../Screens/Auth/ForgetPassword'
+import SignUp from '../Screens/Auth/SignUp';
 import FavBrand from '../Screens/FavBrand'
 import Success from '../Screens/Success'
 import Home from '../Screens/Home'
 import StoreInfo from '../Screens/StoreInfo'
 import Search from '../Screens/Search'
 import Profile from '../Screens/Profile'
+
 import CashBackActivities from '../Screens/CashbackActivities'
 import CategoryDetails from '../Screens/CategoryDetails'
 
@@ -180,12 +183,14 @@ class AppNavigator extends Component {
           <Stack.Screen name="Welcome" component={Welcome} />
           <Stack.Screen name="SocialLogin" component={SocialLogin} />
           <Stack.Screen name="SignUp" component={SignUp} />
+          <Stack.Screen name="Login" component={Login} />
           <Stack.Screen name="FavBrand" component={FavBrand} />
           <Stack.Screen name="Success" component={Success} />
           <Stack.Screen name="Home" component={MyTabs} />
           <Stack.Screen name="StoreInfo" component={StoreInfo} />
           <Stack.Screen name="CategoryDetails" component={CategoryDetails} />
           <Stack.Screen name="CashBackActivities" component={CashBackActivities} />
+          <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
         </MainStack.Navigator>
       </NavigationContainer>
     );

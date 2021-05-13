@@ -1,8 +1,8 @@
 import React from 'react'
 import { StyleSheet, Text, View, ImageBackground, Dimensions, FlatList, TouchableOpacity } from 'react-native'
 import LinearButton from '../../Components/LinearButton'
-import Button from '../../Components/Button'
 import { AppImages } from '@assets/Images';
+import { translate } from '@translations';
 import { Theme } from '@assets/Theme';
 import FirstLogo from './FirstLogo'
 import { onBoardingData } from '@assets/AppDataConfig';
@@ -45,37 +45,17 @@ const Welcome = ({ navigation }) => {
                         </View>
                         <View style={{ flex: 1, justifyContent: "space-evenly" }} >
                             <LinearButton onPress={() => navigation.navigate('SocialLogin')} >
-                                <Text style={styles.buttonText} >GET STARTED</Text>
+                                <Text style={styles.buttonText} >{translate('getStarted')}</Text>
                             </LinearButton>
                             <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('FavBrand')}>
-                                <Text style={[styles.buttonText, { color: 'white' }]} >LOG IN</Text>
+                                <Text style={[styles.buttonText, { color: 'white' }]} >{translate('login')}</Text>
                             </TouchableOpacity>
                         </View>
                     </ImageBackground>
                 );
             })}
         </Swiper>
-        // <ImageBackground style={{
-        //     flex: 1, width: width, height: height,
-        //     backgroundColor: Theme.COLORS.bg_transparent
-        // }}
-        //     imageStyle={{ opacity: 0.5 }}
-        //     source={AppImages.welcome1} >
 
-        //     <View style={{ flex: 4, justifyContent: "space-evenly", marginTop: 100 }} >
-
-        //     </View>
-        //     <View style={{ flex: 1, justifyContent: "space-evenly" }} >
-        //         <LinearButton>
-        //             <Button onPress={() => navigation.navigate('SocialLogin')} >
-        //                 <Text style={styles.buttonText} >GET STARTED</Text>
-        //             </Button>
-        //         </LinearButton>
-        //         <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('Login')}>
-        //             <Text style={[styles.buttonText, { color: 'white' }]} >LOG IN</Text>
-        //         </TouchableOpacity>
-        //     </View>
-        // </ImageBackground>
 
     )
 }
@@ -109,9 +89,10 @@ const styles = StyleSheet.create({
         //backgroundColor: Theme.COLORS.grey
     },
     titleText: {
+        ...Theme.fontStyles.h1Bold,
         fontSize: 30,
-        textAlign: 'center',
         fontWeight: 'bold',
+        textAlign: 'center',
         color: Theme.COLORS.white,
         paddingHorizontal: 50
     },
