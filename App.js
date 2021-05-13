@@ -20,13 +20,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import TabNavigation from './src/Components/tabNavigation'
 
-import Welcome from './src/Screens/Welcome'
-import SocialLogin from './src/Screens/SocialLogin';
-import Login from './src/Screens/Login';
-import FavBrand from './src/Screens/FavBrand'
-import Success from './src/Screens/Success'
-import Home from './src/Screens/Home'
-import StoreInfo from './src/Screens/StoreInfo'
 
 
 const Stack = createStackNavigator();
@@ -49,6 +42,7 @@ const App = () => {
         <Stack.Screen name="Success" component={Success} />
         <Stack.Screen name="Home" component={TabNavigation} />
         <Stack.Screen name="StoreInfo" component={StoreInfo} />
+        <Stack.Screen name="CategoryDetails" component={CategoryDetails} />
 
       </Stack.Navigator>
     </NavigationContainer>

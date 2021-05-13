@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native';
 import LinearButton from '../../Components/LinearButton';
 import { AppImages } from '@assets/Images';
+import { Theme } from '@assets/Theme';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -19,18 +20,16 @@ const index = ({ navigation }) => {
                     <LottieView source={require('../../Assets/Images/animation.json')} autoPlay loop={false} style={{ height: 500, width: 500, position: 'absolute', marginTop: -50 }} />
                 </View>
                 <TouchableOpacity style={styles.coin}>
-                    <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 23 }}>+200</Text>
+                    <Text style={{ color: Theme.COLORS.white, fontWeight: 'bold', fontSize: 23 }}>+200</Text>
                     <Icon name="comment-dollar" size={23} color="#ffc107" />
                 </TouchableOpacity>
                 <Text style={styles.successText}>You're all set!</Text>
-                <Text style={{ color: 'white', textAlign: 'center', marginHorizontal: 45, marginTop: 5 }}>Congratulations! By completing your profile you have received <Text style={{ fontWeight: 'bold', color: 'white' }}>200 soul'd coins</Text></Text>
-                <TouchableOpacity onPress={() => navigation.navigate("Home")} >
-                    <LinearButton style={{ marginTop: 30 }}>
-                        <Text style={styles.buttonText} >CONTINUE</Text>
-                    </LinearButton>
-                </TouchableOpacity>
+                <Text style={{ color: Theme.COLORS.white, textAlign: 'center', marginHorizontal: 45, marginTop: 5 }}>Congratulations! By completing your profile you have received <Text style={{ fontWeight: 'bold', color: 'white' }}>200 soul'd coins</Text></Text>
+                <LinearButton style={{ marginTop: 30 }} onPress={() => navigation.navigate("Home")}>
+                    <Text style={styles.buttonText} >CONTINUE</Text>
+                </LinearButton>
                 <TouchableOpacity>
-                    <Text style={{ color: 'white', fontSize: 12, marginTop: 15 }}>What are Soul'd Coins ?</Text>
+                    <Text style={{ color: Theme.COLORS.white, fontSize: 12, marginTop: 15 }}>What are Soul'd Coins ?</Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground>
@@ -50,7 +49,7 @@ const styles = StyleSheet.create({
         width: 110,
         borderRadius: 25,
         backgroundColor: 'rgba(30, 30, 30, 0.9)',
-        borderColor: 'grey',
+        borderColor: Theme.COLORS.grey,
         borderWidth: 1,
         flexDirection: 'row',
         justifyContent: 'space-evenly',
@@ -59,7 +58,7 @@ const styles = StyleSheet.create({
     successText: {
         fontSize: 30,
         fontWeight: 'bold',
-        color: 'white',
+        color: Theme.COLORS.white,
         marginTop: 15
     },
     buttons: {

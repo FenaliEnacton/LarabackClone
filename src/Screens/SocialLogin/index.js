@@ -4,6 +4,7 @@ import LoginHeader from '../../Components/loginHeader'
 import Icon from 'react-native-vector-icons/AntDesign';
 import FbIcon from 'react-native-vector-icons/MaterialIcons';
 import { AppImages } from '@assets/Images';
+import { Theme } from '@assets/Theme';
 
 
 const height = Dimensions.get('window').height;
@@ -15,7 +16,7 @@ const SocialLogin = ({ navigation }) => {
             <LoginHeader step={"STEP 1"} heading={"Create an account"} desc={"Create an account to continue!"} />
 
             <View style={styles.EmailView}>
-                <TouchableOpacity style={styles.loginbutton} onPress={() => { navigation.navigate('Login') }}>
+                <TouchableOpacity style={styles.loginbutton} onPress={() => { navigation.navigate('SignUp') }}>
                     <View style={styles.icon} >
                         <Icon name="mail" size={17} color="black" />
                     </View>
@@ -28,33 +29,33 @@ const SocialLogin = ({ navigation }) => {
 
             <View style={styles.orView}>
                 <View style={styles.line}></View>
-                <Text style={{ color: 'grey', fontWeight: 'bold' }}>or</Text>
+                <Text style={{ color: Theme.COLORS.grey, fontWeight: 'bold' }}>or</Text>
                 <View style={styles.line}></View>
             </View>
 
 
             {/* <View style={styles.buttonView}> */}
-            <TouchableOpacity style={[styles.loginbutton, { backgroundColor: 'black', borderWidth: 1, borderColor: "grey" }]}>
+            <TouchableOpacity style={[styles.loginbutton, { backgroundColor: Theme.COLORS.black, borderWidth: 1, borderColor: Theme.COLORS.grey }]}>
                 <View style={styles.icon} >
-                    <Icon name="apple1" size={17} color="white" />
+                    <Icon name="apple1" size={17} color={Theme.COLORS.white} />
                 </View>
                 <View style={styles.buttonTextView}>
-                    <Text style={[styles.buttonText, { color: 'white' }]}>Continue with Apple</Text>
+                    <Text style={[styles.buttonText, { color: Theme.COLORS.white }]}>Continue with Apple</Text>
                 </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={[styles.loginbutton, { backgroundColor: '#0288d1' }]}>
+            <TouchableOpacity style={[styles.loginbutton, { backgroundColor: Theme.COLORS.facebook }]}>
                 <View style={styles.icon} >
                     <FbIcon name="facebook" size={20} color="white" />
                 </View>
                 <View style={styles.buttonTextView}>
-                    <Text style={[styles.buttonText, { color: 'white' }]}>Continue with Facebook</Text>
+                    <Text style={[styles.buttonText, { color: Theme.COLORS.white }]}>Continue with Facebook</Text>
                 </View>
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.loginbutton}>
                 <View style={styles.icon} >
-                    <Icon name="google" size={17} color="black" />
+                    <Icon name="google" size={17} color={Theme.COLORS.black} />
                 </View>
                 <View style={styles.buttonTextView}>
                     <Text style={styles.buttonText}>Continue with Google</Text>
@@ -66,7 +67,7 @@ const SocialLogin = ({ navigation }) => {
             <View style={styles.alreadyAccountView}>
                 <Text style={{ color: 'grey', fontSize: 12 }}>Already have an account ? </Text>
                 <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-                    <Text style={{ color: 'white' }}>Log in</Text>
+                    <Text style={{ color: Theme.COLORS.white }}>Log in</Text>
                 </TouchableOpacity>
             </View>
         </ImageBackground >
@@ -84,7 +85,7 @@ const styles = StyleSheet.create({
         height: 45,
         width: (width * 85) / 100,
         borderRadius: 22,
-        backgroundColor: 'white',
+        backgroundColor: Theme.COLORS.white,
         flexDirection: 'row',
         marginTop: 15,
         alignSelf: 'center'
@@ -119,7 +120,7 @@ const styles = StyleSheet.create({
     line: {
         height: 0.5,
         width: (width / 2) - 50,
-        backgroundColor: 'grey',
+        backgroundColor: Theme.COLORS.grey,
         alignSelf: 'center',
     },
     buttonView: {
@@ -127,7 +128,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
         //height: (height * 25) / 100,
         justifyContent: 'center',
-        backgroundColor: 'red'
+        //backgroundColor: 'red'
     },
     alreadyAccountView: {
         alignSelf: 'center',

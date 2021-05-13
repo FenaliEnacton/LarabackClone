@@ -3,6 +3,7 @@ import { View, Text, ScrollView, TextInput, ImageBackground, Dimensions, StyleSh
 import Icon from 'react-native-vector-icons/AntDesign';
 import LinearGradient from 'react-native-linear-gradient';
 import { AppImages } from '@assets/Images';
+import { Theme } from '@assets/Theme'
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -15,13 +16,13 @@ const index = ({ navigation }) => {
             <View style={styles.searchView}>
                 <View style={styles.searchBar}>
                     <TouchableOpacity style={styles.searchIcon}>
-                        <Icon name={'search1'} size={20} color={'white'} />
+                        <Icon name={'search1'} size={20} color={Theme.COLORS.white} />
                     </TouchableOpacity>
                     <TextInput style={{ flex: 1 }}
                         placeholder='Search for black brands and products'
-                        placeholderTextColor='grey' />
+                        placeholderTextColor={Theme.COLORS.grey} />
                     <TouchableOpacity style={[styles.searchIcon]}>
-                        <Icon name={'close'} size={20} color={'white'} />
+                        <Icon name={'close'} size={20} color={Theme.COLORS.white} />
                     </TouchableOpacity>
                 </View>
             </View>
@@ -29,9 +30,9 @@ const index = ({ navigation }) => {
             <ScrollView nestedScrollEnabled={true}>
                 <View style={styles.popularBrandView}>
                     <View style={[styles.productHeading]}>
-                        <Text style={{ color: 'white', fontWeight: '700' }}>Most Popular Brands</Text>
-                        <TouchableOpacity style={{ borderBottomColor: 'white', borderBottomWidth: 1 }}>
-                            <Text style={{ color: 'white' }}>View All</Text>
+                        <Text style={{ color: Theme.COLORS.white, fontWeight: '700' }}>Most Popular Brands</Text>
+                        <TouchableOpacity style={{ borderBottomColor: Theme.COLORS.white, borderBottomWidth: 1 }}>
+                            <Text style={{ color: Theme.COLORS.white }}>View All</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.popularBrandIconView}>
@@ -54,7 +55,7 @@ const index = ({ navigation }) => {
                 </View>
 
                 <View style={{ marginHorizontal: (width * 4) / 100 }}>
-                    <Text style={{ color: 'white', fontWeight: '700' }}>Browse Categories</Text>
+                    <Text style={{ color: Theme.COLORS.white, fontWeight: '700' }}>Browse Categories</Text>
                 </View>
 
                 <View style={{ marginTop: 20, marginHorizontal: (width * 4) / 100, flex: 1 }}>
@@ -70,18 +71,15 @@ const index = ({ navigation }) => {
                             return (
                                 <View >
                                     <View style={{ flexDirection: "row" }} >
-                                        <View style={[styles.categoryCard]}>
+                                        <TouchableOpacity style={[styles.categoryCard]} onPress={() => { navigation.navigate('CategoryDetails') }}>
                                             <ImageBackground borderRadius={10} source={AppImages.homeBrandLogo} style={styles.brandImg} >
-                                                <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#rgba(0,255,105,0.5)', 'rgba(18,106,222,0.5)']} style={[styles.categoryCard, { position: 'absolute', opacity: 0.5 }]}>
+                                                <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={[Theme.COLORS_SET[2][index % Theme.COLORS_SET[2].length], Theme.COLORS_SET[4][index % Theme.COLORS_SET[4].length]]} style={[styles.categoryCard, { position: 'absolute', opacity: 0.6 }]}>
                                                 </LinearGradient>
                                                 <Text>Hair Care</Text>
                                             </ImageBackground>
-                                        </View>
+                                        </TouchableOpacity>
                                         <View style={{ padding: (width * 2) / 100 }}></View>
                                     </View>
-                                    {/* {
-                                    index == (data.length - 1) ? <View style={{ height: 60 }} ></View> : null
-                                } */}
                                 </View>
                             )
                         }}
@@ -97,7 +95,7 @@ const styles = StyleSheet.create({
     searchView: {
         height: 90,
         width: width,
-        backgroundColor: 'rgba(40, 40, 40, 0.8)',
+        backgroundColor: Theme.COLORS.bg_grey,
         justifyContent: 'flex-end'
     },
     searchBar: {
@@ -137,15 +135,13 @@ const styles = StyleSheet.create({
     categoryCard: {
         height: 75,
         width: (width * 44) / 100,
-        backgroundColor: 'white',
+        backgroundColor: Theme.COLORS.white,
         marginBottom: (width * 4) / 100,
         borderRadius: 10,
-        // justifyContent: "space-evenly",
     },
     brandImg: {
         height: 75,
         width: (width * 44) / 100,
-        //resizeMode: 'cover',
         marginBottom: (width * 4) / 100,
         borderRadius: 10,
         justifyContent: 'center',

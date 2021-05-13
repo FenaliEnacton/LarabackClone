@@ -1,14 +1,15 @@
 import React from 'react'
-import { View, Text, ScrollView, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native'
+import { View, Text, ScrollView, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Image, FlatList, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
 import LinearButton from '../../Components/LinearButton'
 import { AppImages } from '@assets/Images';
+import { Theme } from '@assets/Theme';
 
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-const index = () => {
+const Home = ({ navigation }) => {
     const data = [1, 2, 3, 4, 5]
     return (
         <ImageBackground source={AppImages.app_bg} style={{ flex: 1, width: width, height: height, }}>
@@ -16,15 +17,17 @@ const index = () => {
 
                 <View style={styles.heading}>
                     <Text style={styles.text}>SOUL'D</Text>
-                    <Text style={{ fontSize: 10, color: 'white' }}>REFER & EARN $20+</Text>
+                    <Text style={{ fontSize: 10, color: Theme.COLORS.white }}>REFER & EARN $20+</Text>
                 </View>
                 <View style={styles.searchView}>
-                    <TouchableOpacity style={styles.searchBar}>
+                    <View style={styles.searchBar}>
                         <View style={styles.searchIcon}>
-                            <Icon name={'search1'} size={20} color={'white'} />
+                            <Icon name={'search1'} size={20} color={Theme.COLORS.white} />
                         </View>
-                        <Text style={{ color: 'grey' }}>Search for black brands and products</Text>
-                    </TouchableOpacity>
+                        <TouchableOpacity onPress={() => { navigation.navigate('Search') }} style={{ color: Theme.COLORS.grey }}>
+                            <Text style={{ color: Theme.COLORS.grey }}>Search for black brands and products</Text>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </View>
             <View style={{ flex: 1 }}>
@@ -44,12 +47,10 @@ const index = () => {
 
                                             <View style={styles.brandTextView}>
                                                 <Text style={{ fontWeight: 'bold', fontSize: 18 }}>RAYCON</Text>
-                                                <Text style={{ fontSize: 13, color: 'grey' }}>Extra cashback on the new Performer Earbugs</Text>
-                                                <TouchableOpacity onPress={() => console.log("object")} >
-                                                    <LinearButton style={styles.buttons}>
-                                                        <Text style={styles.buttonText} >10% Cash Back</Text>
-                                                    </LinearButton>
-                                                </TouchableOpacity>
+                                                <Text style={{ fontSize: 13, color: Theme.COLORS.grey }}>Extra cashback on the new Performer Earbugs</Text>
+                                                <LinearButton style={styles.buttons} onPress={() => console.log("object")}>
+                                                    <Text style={styles.buttonText} >10% Cash Back</Text>
+                                                </LinearButton>
                                             </View>
                                         </TouchableOpacity>
                                     </View>
@@ -67,9 +68,9 @@ const index = () => {
                     </View>
 
                     <View style={[styles.productHeading, { marginTop: -60 }]}>
-                        <Text style={{ color: 'white', fontWeight: '700' }}>Hair products for black women</Text>
-                        <TouchableOpacity style={{ borderBottomColor: 'white', borderBottomWidth: 1 }}>
-                            <Text style={{ color: 'white' }}>View All</Text>
+                        <Text style={{ color: Theme.COLORS.white, fontWeight: '700' }}>Hair products for black women</Text>
+                        <TouchableOpacity style={{ borderBottomColor: Theme.COLORS.white, borderBottomWidth: 1 }}>
+                            <Text style={{ color: Theme.COLORS.white }}>View All</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.productView}>
@@ -100,11 +101,11 @@ const index = () => {
                         />
                     </View>
 
-                    <View style={{ backgroundColor: 'rgba(40, 40, 40, 0.8)' }}>
+                    <View style={{ backgroundColor: Theme.COLORS.bg_grey }}>
                         <View style={[styles.productHeading, { marginTop: 20 }]}>
-                            <Text style={{ color: 'white', fontWeight: '700' }}>Most Popular Brands</Text>
-                            <TouchableOpacity style={{ borderBottomColor: 'white', borderBottomWidth: 1 }}>
-                                <Text style={{ color: 'white' }}>View All</Text>
+                            <Text style={{ color: Theme.COLORS.white, fontWeight: '700' }}>Most Popular Brands</Text>
+                            <TouchableOpacity style={{ borderBottomColor: Theme.COLORS.white, borderBottomWidth: 1 }}>
+                                <Text style={{ color: Theme.COLORS.white }}>View All</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.popularBrandView}>
@@ -146,7 +147,7 @@ const styles = StyleSheet.create({
         //backgroundColor: 'pink'
     },
     text: {
-        color: 'white',
+        color: Theme.COLORS.white,
         fontWeight: 'bold'
     },
     searchView: {
@@ -154,10 +155,10 @@ const styles = StyleSheet.create({
     },
     searchBar: {
         height: (height * 5) / 100,
-        borderColor: 'grey',
+        borderColor: Theme.COLORS.grey,
         borderWidth: 1,
         borderRadius: 5,
-        backgroundColor: 'rgba(40, 40, 40, 0.8)',
+        backgroundColor: Theme.COLORS.bg_grey,
         marginTop: 10,
         flexDirection: 'row',
         alignItems: 'center'
@@ -176,8 +177,8 @@ const styles = StyleSheet.create({
     },
     topBrandCard: {
         height: 130,
-        width: (width * 85) / 100,
-        backgroundColor: 'white',
+        width: (width * 80) / 100,
+        backgroundColor: Theme.COLORS.white,
         borderRadius: 10,
         marginRight: 10,
         flexDirection: 'row'
@@ -215,7 +216,7 @@ const styles = StyleSheet.create({
     midImg: {
         height: '100%',
         width: '100%',
-        backgroundColor: 'rgb(60,60,60)',
+        backgroundColor: Theme.COLORS.bg_transparent,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -236,7 +237,7 @@ const styles = StyleSheet.create({
         height: 150,
         width: (width * 37) / 100,
         borderRadius: 10,
-        backgroundColor: 'white',
+        backgroundColor: Theme.COLORS.white,
         marginRight: 10
     },
     popularBrandView: {
@@ -253,4 +254,4 @@ const styles = StyleSheet.create({
         marginRight: 15
     }
 })
-export default index
+export default Home

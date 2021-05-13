@@ -7,10 +7,19 @@ const width = Dimensions.get('window').width;
 
 
 const LinearButton = (props) => {
+
     return (
-        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00ff69', '#00ffda']} style={[styles.button, props.style]}>
-            {props.children}
-        </LinearGradient>
+        <>
+            {props.notActive ?
+                <TouchableOpacity style={[styles.button, { backgroundColor: 'white' }, props.style]} onPress={props.onPress}>
+                    {props.children}
+                </TouchableOpacity>
+                : <TouchableOpacity onPress={props.onPress} >
+                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#4BD95A', '#4AADD7']} style={[styles.button, props.style]}>
+                        {props.children}
+                    </LinearGradient>
+                </TouchableOpacity>}
+        </>
     )
 }
 const styles = StyleSheet.create({
@@ -21,7 +30,7 @@ const styles = StyleSheet.create({
         width: (width * 85) / 100,
         borderRadius: 30,
         justifyContent: "center",
-        backgroundColor: 'white'
+        // backgroundColor: 'white',
     }
 })
 export default LinearButton
