@@ -8,6 +8,7 @@ import TextBox from '../../../Components/TextBox'
 import Button from '../../../Components/LinearButton'
 import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
+import { BgImage } from '@components/generic'
 import Icon from 'react-native-vector-icons/Feather';
 
 const height = Dimensions.get('window').height;
@@ -33,7 +34,7 @@ const SignUp = ({ navigation }) => {
         navigation.navigate('FavBrand')
     }
     return (
-        <ImageBackground source={AppImages.app_bg} style={styles.bg_img}>
+        <BgImage>
             <LoginHeader step={"STEP 1"} heading={translate('createAccount')} desc={translate('createAccountToContinue')} />
             <View style={{ marginTop: 30, alignItems: 'center' }}>
                 <Formik
@@ -106,16 +107,11 @@ const SignUp = ({ navigation }) => {
                     <Text style={styles.policyText}>{translate('privacyConfirmation')}</Text>
                 </View>
             </View>
-        </ImageBackground>
+        </BgImage>
     )
 }
 
 const styles = StyleSheet.create({
-    bg_img: {
-        flex: 1,
-        width: width,
-        height: height,
-    },
     inputText: {
         height: 45,
         width: (width * 85) / 100,

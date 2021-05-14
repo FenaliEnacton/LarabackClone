@@ -8,12 +8,12 @@ export const fontStyles = {
     fontSize: 18,
     ...Platform.select({
       ios: {
-        fontWeight: '500',
+        fontWeight: '700',
         // fontFamily: 'circe-bold',
       },
       android: {
         // fontFamily: 'circeBold',
-        fontWeight: '500',
+        fontWeight: '700',
       },
     }),
     color: COLORS.blackText,
@@ -33,12 +33,12 @@ export const fontStyles = {
   h2Bold: {
     ...Platform.select({
       ios: {
-        fontWeight: '500',
+        fontWeight: '700',
         // fontFamily: 'circe-bold',
       },
       android: {
         // fontFamily: 'circeBold',
-        fontWeight: '500',
+        fontWeight: '700',
       },
     }),
     fontSize: 16,
@@ -61,11 +61,11 @@ export const fontStyles = {
     color: COLORS.blackText,
     ...Platform.select({
       ios: {
-        fontWeight: '500',
+        fontWeight: '700',
         // fontFamily: 'circe-bold',
       },
       android: {
-        // fontWeight: 'bold',
+        fontWeight: 'bold',
         // fontFamily: 'circeBold'
       },
     }),

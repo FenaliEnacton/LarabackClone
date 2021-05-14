@@ -8,6 +8,7 @@ import TextBox from '../../../Components/TextBox'
 import Button from '../../../Components/LinearButton'
 import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
+import { BgImage } from '@components/generic'
 import Icon from 'react-native-vector-icons/Feather';
 
 const height = Dimensions.get('window').height;
@@ -28,7 +29,7 @@ const ForgetPassword = ({ navigation }) => {
         navigation.navigate('FavBrand')
     }
     return (
-        <ImageBackground source={AppImages.app_bg} style={styles.bg_img}>
+        <BgImage>
             <LoginHeader heading={translate('resetPassword')} desc={translate('forgetPassDesc')} />
             <View style={{ marginTop: 30, alignItems: 'center' }}>
                 <Formik
@@ -68,7 +69,7 @@ const ForgetPassword = ({ navigation }) => {
                 </Formik>
 
             </View>
-        </ImageBackground>
+        </BgImage>
     )
 }
 

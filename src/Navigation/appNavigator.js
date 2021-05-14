@@ -179,7 +179,7 @@ class AppNavigator extends Component {
             headerShown: false
           }}
           headerMode="none"
-          initialRouteName={'Welcome'}>
+          initialRouteName={'Home'}>
           <Stack.Screen name="Welcome" component={Welcome} />
           <Stack.Screen name="SocialLogin" component={SocialLogin} />
           <Stack.Screen name="SignUp" component={SignUp} />

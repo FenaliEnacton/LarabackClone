@@ -2,9 +2,12 @@ import React from 'react'
 import { StyleSheet, Text, View, ImageBackground, Dimensions, FlatList, TouchableOpacity, Image, ScrollView } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 import { AppImages } from '@assets/Images';
+import LinearButton from '../../Components/LinearButton';
 import { Theme } from '@assets/Theme';
 import Icon from 'react-native-vector-icons/AntDesign';
 import IconLike from 'react-native-vector-icons/Entypo';
+import { translate } from '@translations';
+import { ProductCard } from '@components/generic'
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -33,22 +36,20 @@ const StoreInfo = ({ navigation }) => {
                     </LinearGradient>
                 </ImageBackground>
                 <View style={styles.storeDetails}>
-                    <Image source={AppImages.cookieLogo} style={{ height: 80, width: 80, borderRadius: 40 }} />
+                    <Image source={AppImages.cookieLogo} style={styles.logo} />
                     <Text style={styles.storeTitle}>Partake Cookies</Text>
                     <Text style={styles.storeDesc}>for curly, coily & tight-textured hair. Black-owned & Black-centered. Celebrating our authentic beauty</Text>
-                    <Text style={{ marginTop: 10 }}></Text>
-                    <TouchableOpacity style={styles.buttons} >
-                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00ff69', '#00ffda']} style={styles.buttons}>
-                            <Text style={styles.buttonText} >SHOP NOW</Text>
-                        </LinearGradient>
-                    </TouchableOpacity>
+                    <View style={styles.cbCoinView}></View>
+                    <LinearButton style={styles.buttons} >
+                        <Text style={styles.buttonText} >{translate('shopNow')}</Text>
+                    </LinearButton>
                 </View>
             </View>
 
             <View style={[styles.productHeading, { marginTop: -50 }]}>
-                <Text style={{ color: Theme.COLORS.white, fontWeight: '700' }}>Hair products for black women</Text>
-                <TouchableOpacity style={{ borderBottomColor: Theme.COLORS.white, borderBottomWidth: 1 }}>
-                    <Text style={{ color: Theme.COLORS.white }}>View All</Text>
+                <Text style={styles.whiteText}>{translate('popularBrand')}</Text>
+                <TouchableOpacity style={styles.viewAll}>
+                    <Text style={{ color: Theme.COLORS.white }}>{translate('viewAll')}</Text>
                 </TouchableOpacity>
             </View>
             <View style={styles.productView}>
@@ -59,19 +60,7 @@ const StoreInfo = ({ navigation }) => {
                     renderItem={({ item, index }) => {
                         return (
                             <View >
-                                <View style={styles.productCard}>
-                                    <Image source={AppImages.homeProduct} style={[styles.midImg, { borderRadius: 15 }]} />
-                                </View>
-                                <TouchableOpacity onPress={() => console.log("object")} style={{ marginVertical: 8 }}>
-                                    <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#00ff69', '#00ffda']} style={styles.cashbackButtons}>
-                                        <Text style={styles.CBbuttonText} >10% Cash Back</Text>
-                                    </LinearGradient>
-                                </TouchableOpacity>
-                                <View>
-                                    <Text style={styles.text}>Title</Text>
-                                    <Text style={styles.text}>Description</Text>
-                                    <Text style={styles.text}>Price</Text>
-                                </View>
+                                <ProductCard></ProductCard>
                             </View>
 
                         )
@@ -91,6 +80,19 @@ const styles = StyleSheet.create({
         height: 200,
         width: width,
     },
+    logo: {
+        height: 80,
+        width: 80,
+        borderRadius: 40
+    },
+    whiteText: {
+        ...Theme.fontStyles.h3Regular,
+        color: Theme.COLORS.white
+    },
+    viewAll: {
+        borderBottomColor: Theme.COLORS.white,
+        borderBottomWidth: 1
+    },
     header: {
         marginTop: 30,
         flexDirection: 'row',
@@ -106,8 +108,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     storeTitle: {
+        ...Theme.fontStyles.h1Bold,
         marginTop: 10,
-        fontWeight: 'bold',
         fontSize: 20,
         color: Theme.COLORS.white
     },
@@ -120,8 +122,9 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     storeDesc: {
+        ...Theme.fontStyles.h3Regular,
         color: Theme.COLORS.white,
-        marginTop: 10,
+        marginTop: 7,
         textAlign: 'center',
         width: (width * 85) / 100
     },
@@ -130,12 +133,18 @@ const styles = StyleSheet.create({
         height: 45,
         width: (width * 40) / 100,
         borderRadius: 30,
-        justifyContent: "center"
+        justifyContent: "center",
+        marginTop: 15
+    },
+    cbCoinView: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        marginTop: 10
     },
     buttonText: {
+        ...Theme.fontStyles.h3Bold,
         textAlign: "center",
-        fontSize: 15,
-        fontWeight: "700"
     },
     productHeading: {
         flexDirection: 'row',

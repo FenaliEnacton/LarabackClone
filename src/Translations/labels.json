@@ -1,5 +1,5 @@
 {
-  "appName": "Letsbucks",
+  "appName": "SOUL'D",
   "requiredField": "Required field",
   "required_field": "Required Felid",
   "email_is_not_valid": "Email is not valid",
@@ -22,5 +22,20 @@
   "forgetPassword": "Forget Password",
   "dontHaveAccount": "Don't have an account ? ",
   "getYouLogin": "Let's get you logged in",
-  "loginDesc": "Welcome back, you've been missed !"
+  "loginDesc": "Welcome back, you've been missed !",
+  "favoriteBrand": "Select some of your favorite brands",
+  "continue": "CONTINUE",
+  "skip": "SKIP",
+  "youAreAllSet": "You're all set!",
+  "coinConfirmation": "Congratulations! By completing your profile you have received",
+  "souldCoins": "soul'd coins",
+  "whatSouldCoins": "What are Soul'd Coins ?",
+  "refer&earn": "REFER & EARN ",
+  "searchPlaceholder": "Search for black brands and products",
+  "viewAll": "View All",
+  "popularBrand": "Most Popular Brands",
+  "browseCategory": "Browse Category",
+  "shopNow": "SHOP NOW",
+  "cashbackBalance": "CASH BACK BALANCE",
+  "redeemCoins": "REDEEM SHOULD COINS"
 }

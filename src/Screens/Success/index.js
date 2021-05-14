@@ -1,38 +1,40 @@
 import React from 'react'
 import { View, Text, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Touchable, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import LinearGradient from 'react-native-linear-gradient';
 import LottieView from 'lottie-react-native';
 import LinearButton from '../../Components/LinearButton';
-import { AppImages } from '@assets/Images';
+import { translate } from '@translations';
 import { Theme } from '@assets/Theme';
+import { BgImage } from '@components/generic'
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
 const index = ({ navigation }) => {
     return (
-        <ImageBackground source={AppImages.app_bg} style={{ flex: 1, width: width, height: height, }}>
-
+        <BgImage>
             <View style={styles.container}>
                 <View style={{ transform: [{ rotate: "180deg" }], alignItems: 'center' }}>
-
-                    <LottieView source={require('../../Assets/Images/animation.json')} autoPlay loop={false} style={{ height: 500, width: 500, position: 'absolute', marginTop: -50 }} />
+                    <LottieView source={require('../../Assets/Images/animation.json')}
+                        autoPlay loop={false}
+                        style={styles.animationStyle} />
                 </View>
                 <TouchableOpacity style={styles.coin}>
-                    <Text style={{ color: Theme.COLORS.white, fontWeight: 'bold', fontSize: 23 }}>+200</Text>
+                    <Text style={styles.coinText}>+200</Text>
                     <Icon name="comment-dollar" size={23} color="#ffc107" />
                 </TouchableOpacity>
-                <Text style={styles.successText}>You're all set!</Text>
-                <Text style={{ color: Theme.COLORS.white, textAlign: 'center', marginHorizontal: 45, marginTop: 5 }}>Congratulations! By completing your profile you have received <Text style={{ fontWeight: 'bold', color: 'white' }}>200 soul'd coins</Text></Text>
+                <Text style={styles.successText}>{translate('youAreAllSet')}</Text>
+                <Text style={styles.confirmationText}>{translate('coinConfirmation')}
+                    <Text style={styles.boldText}> 200 {translate('souldCoins')}</Text>
+                </Text>
                 <LinearButton style={{ marginTop: 30 }} onPress={() => navigation.navigate("Home")}>
-                    <Text style={styles.buttonText} >CONTINUE</Text>
+                    <Text style={styles.buttonText} >{translate('continue')}</Text>
                 </LinearButton>
                 <TouchableOpacity>
-                    <Text style={{ color: Theme.COLORS.white, fontSize: 12, marginTop: 15 }}>What are Soul'd Coins ?</Text>
+                    <Text style={[styles.confirmationText, { marginTop: 15 }]}>{translate('whatSouldCoins')}</Text>
                 </TouchableOpacity>
             </View>
-        </ImageBackground>
+        </BgImage>
     )
 }
 
@@ -43,6 +45,12 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         // backgroundColor: 'pink'
+    },
+    animationStyle: {
+        height: 500,
+        width: 500,
+        position: 'absolute',
+        marginTop: -50
     },
     coin: {
         height: 48,
@@ -55,11 +63,28 @@ const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center'
     },
+    coinText: {
+        ...Theme.fontStyles.h1Bold,
+        color: Theme.COLORS.white,
+        fontSize: 23
+    },
     successText: {
+        ...Theme.fontStyles.h1Bold,
         fontSize: 30,
-        fontWeight: 'bold',
         color: Theme.COLORS.white,
         marginTop: 15
+    },
+    confirmationText: {
+        ...Theme.fontStyles.h3Regular,
+        color: Theme.COLORS.white,
+        textAlign: 'center',
+        marginHorizontal: 45,
+        marginTop: 5,
+    },
+    boldText: {
+        ...Theme.COLORS.h2Bold,
+        fontWeight: 'bold',
+        color: Theme.COLORS.white
     },
     buttons: {
         alignSelf: "center",

@@ -8,6 +8,7 @@ import TextBox from '../../Components/TextBox'
 import Button from '../../Components/LinearButton'
 import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
+import { BgImage } from '@components/generic'
 import Icon from 'react-native-vector-icons/Feather';
 
 const height = Dimensions.get('window').height;
@@ -32,7 +33,7 @@ const Login = ({ navigation }) => {
         navigation.navigate('FavBrand')
     }
     return (
-        <ImageBackground source={AppImages.app_bg} style={styles.bg_style}>
+        <BgImage>
             <LoginHeader heading={translate('getYouLogin')} desc={translate('loginDesc')} />
             <View style={{ marginTop: 30, alignItems: 'center' }}>
                 <Formik
@@ -100,15 +101,11 @@ const Login = ({ navigation }) => {
                     </TouchableOpacity>
                 </View>
             </View>
-        </ImageBackground>
+        </BgImage>
     )
 }
 const styles = StyleSheet.create({
-    bg_style: {
-        flex: 1,
-        width: width,
-        height: height,
-    },
+
     alreadyAccountView: {
         alignSelf: 'center',
         height: 20,

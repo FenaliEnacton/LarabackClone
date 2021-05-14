@@ -4,7 +4,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
 import Icon from 'react-native-vector-icons/AntDesign';
-
+import { translate } from '@translations';
+import { BgImage, ProductCard, BrandLogo } from '@components/generic'
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -30,9 +31,9 @@ const CategoryDetails = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
 
-                    <View style={{ marginTop: 110, alignItems: 'center', marginHorizontal: 20 }}>
-                        <Text style={{ color: 'white', fontSize: 25, fontWeight: 'bold' }}>Hair Care</Text>
-                        <Text style={{ color: Theme.COLORS.white, textAlign: 'center', marginTop: 5 }}>Find product to protect your crown, Save on hair care designed for and by the people</Text>
+                    <View style={styles.categoryContent}>
+                        <Text style={styles.catTitle}>Hair Care</Text>
+                        <Text style={styles.catDesc}>Find product to protect your crown, Save on hair care designed for and by the people</Text>
                     </View>
                 </LinearGradient>
             </ImageBackground>
@@ -47,18 +48,15 @@ const CategoryDetails = ({ navigation }) => {
                     renderItem={({ item, index }) => {
                         return (
                             <View style={styles.IconBox}>
-                                <TouchableOpacity style={styles.IconView} onPress={() => console.log(index)}>
-
-                                </TouchableOpacity>
+                                <BrandLogo>
+                                </BrandLogo>
                                 <Text style={styles.brandNameText}>The marathon clothing</Text>
                             </View>
                         )
                     }}
                 />
-                {/* <View style={{ height: 90, width: width }}></View> */}
             </View>
         </View>
-        // </ScrollView>
     )
 }
 const styles = StyleSheet.create({
@@ -69,6 +67,22 @@ const styles = StyleSheet.create({
     fadedView: {
         height: 200,
         width: width
+    },
+    categoryContent: {
+        marginTop: 110,
+        alignItems: 'center',
+        marginHorizontal: 20
+    },
+    catDesc: {
+        ...Theme.fontStyles.h3Regular,
+        color: Theme.COLORS.white,
+        textAlign: 'center',
+        marginTop: 5
+    },
+    catTitle: {
+        ...Theme.fontStyles.h1Bold,
+        color: Theme.COLORS.white,
+        fontSize: 25,
     },
     header: {
         marginTop: 30,

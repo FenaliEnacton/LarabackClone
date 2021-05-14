@@ -5,16 +5,18 @@ import {
     HeaderLeft,
 } from '@components/core'
 import { Theme } from '@assets/Theme'
-import { AppImages } from '@assets/Images'
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/EvilIcons';
+import { translate } from '@translations';
+import RouterList from '@assets/RouterList'
+import { BgImage } from '@components/generic'
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
 const index = ({ navigation }) => {
     return (
-        <ImageBackground source={AppImages.app_bg} style={{ flex: 1, width: width, height: height, }}>
+        <BgImage>
             <Header>
                 <Text style={[styles.whiteText, { fontWeight: 'bold' }]}>PROFILE</Text>
             </Header>
@@ -23,23 +25,33 @@ const index = ({ navigation }) => {
                 <View style={styles.profileDetails}>
                     <View style={styles.userName}>
                         <Icon name={'user'} size={20} color={Theme.COLORS.white} />
-                        <Text style={[styles.whiteText, { fontWeight: 'bold' }]}> Hey!</Text>
-                        <Text style={[styles.whiteText, { color: 'green', fontWeight: 'bold' }]}> Theo</Text>
+                        <Text style={styles.userNameText}> Hey!</Text>
+                        <Text style={[styles.userNameText, { color: 'green' }]}> Theo</Text>
                     </View>
 
                     <LinearGradient start={{ x: 0.7, y: 0.0 }} end={{ x: 0.0, y: 0.7 }} colors={['#4AADD7', '#4BD95A']} style={styles.cbBalance}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                             <View>
-                                <Text style={{ color: 'white', fontSize: 12 }}>CASH BACK BALANCE</Text>
+                                <Text style={styles.whiteText}>{translate('cashbackBalance')}</Text>
                                 <Text style={[styles.whiteText, { fontSize: 35, fontStyle: 'italic' }]}>2,000 pts</Text>
                             </View>
                         </View>
                         <TouchableOpacity style={styles.redeemBtn}>
-                            <Text style={[styles.whiteText, { fontSize: 12 }]}>REDEEM SHOULD APP</Text>
+                            <Text style={[styles.whiteText]}>{translate('redeemCoins')}</Text>
                         </TouchableOpacity>
                     </LinearGradient>
                 </View>
 
+                {/* {RouterList.map((e, index) => {
+                    return (
+                        <TouchableOpacity style={[styles.listGreyBox, { marginTop: 30, borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]}
+                            onPress={() => { navigation.navigate('CashBackActivities') }}
+                            key={index.toString()}>
+                            <Text style={styles.whiteText}>{e.title}</Text>
+                            <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
+                        </TouchableOpacity>
+                    )
+                })} */}
                 <TouchableOpacity style={[styles.listGreyBox, { marginTop: 30, borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]} onPress={() => { navigation.navigate('CashBackActivities') }}>
                     <Text style={styles.whiteText}>Cash Back Activities</Text>
                     <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
@@ -93,7 +105,7 @@ const index = ({ navigation }) => {
                 </TouchableOpacity>
                 <View style={{ height: 60, width: width }}></View>
             </ScrollView>
-        </ImageBackground>
+        </BgImage>
     )
 }
 const styles = StyleSheet.create({
@@ -106,9 +118,13 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     whiteText: {
+        ...Theme.fontStyles.h1Ragular,
         color: Theme.COLORS.white,
-        fontSize: 15,
-
+    },
+    userNameText: {
+        ...Theme.fontStyles.h1Bold,
+        color: Theme.COLORS.white,
+        fontSize: 20
     },
     profileDetails: {
         width: (width * 90) / 100,

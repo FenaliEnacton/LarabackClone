@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { View, Text, ImageBackground, Dimensions, StyleSheet, FlatList, TouchableOpacity, Image, ScrollView } from 'react-native'
+import { View, Text, Dimensions, StyleSheet, FlatList, TouchableOpacity, Image, ScrollView } from 'react-native'
 import LoginHeader from '../../Components/loginHeader'
 import { BlurView } from "@react-native-community/blur";
+import { translate } from '@translations';
 import Icon from 'react-native-vector-icons/Feather';
 import LinearButton from '../../Components/LinearButton'
-import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
+import { BgImage, BrandLogo } from '@components/generic'
 import LinearGradient from 'react-native-linear-gradient';
 
 const height = Dimensions.get('window').height;
@@ -29,42 +30,42 @@ const index = ({ navigation }) => {
             return prev.filter(icon => icon != id);
         })
     }
-
+    const handleContinue = () => {
+        if (icon != '') {
+            navigation.navigate('Success')
+        }
+    }
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20];
     return (
-        <ImageBackground source={AppImages.app_bg} style={{ flex: 1, width: width, height: height, }}>
-            <LoginHeader step={"STEP 2"} heading={"Select some of your favorite brands"} />
-            {/* <ScrollView removeClippedSubviews={false}> */}
+        <BgImage>
+            <LoginHeader step={"STEP 2"} heading={translate('favoriteBrand')} />
             <View style={styles.IconContainer}>
                 <FlatList
                     data={data}
                     style={{ flex: 1 }}
-                    //nestedScrollEnabled
                     keyExtractor={(item, index) => (index.toString())}
                     numColumns={3}
                     renderItem={({ item, index }) => {
                         return (
                             <View style={styles.IconBox}>
-                                <TouchableOpacity style={styles.IconView} onPress={() => brandClickHandler(index)}>
+                                <BrandLogo onPress={() => brandClickHandler(index)}>
                                     {icon.map((data, i) => {
                                         if (data == index)
                                             return <TouchableOpacity style={styles.tick} key={() => i.toString()}>
                                                 <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#4BD95A', '#4AADD7']} style={styles.imgTick}>
                                                     <Icon name='check' size={15} />
                                                 </LinearGradient>
-                                                <TouchableOpacity style={styles.IconView} onPress={() => removeSelection(index)}></TouchableOpacity>
+                                                <BrandLogo onPress={() => removeSelection(index)}></BrandLogo>
                                             </TouchableOpacity>
                                     })}
-                                </TouchableOpacity>
+                                </BrandLogo>
                                 <Text style={styles.brandNameText}>The marathon clothing</Text>
+                                {data.length - 1 == index ? <View style={{ height: 90, width: width }}></View> : null}
                             </View>
                         )
                     }}
                 />
-                <View style={{ height: 90, width: width }}></View>
             </View>
-            {/* </ScrollView> */}
-            {/* <View style={styles.BlurNavBar}></View> */}
             <BlurView
                 style={styles.BlurNavBar}
                 overlayColor=""
@@ -73,16 +74,16 @@ const index = ({ navigation }) => {
                 reducedTransparencyFallbackColor={Theme.COLORS.white}
             />
             <View style={styles.navBar}>
-                <LinearButton onPress={() => navigation.navigate('Success')} notActive={icon == '' ? true : false}>
-                    <Text style={styles.buttonText} >CONTINUE</Text>
+                <LinearButton onPress={() => handleContinue()} notActive={icon == '' ? true : false}>
+                    <Text style={styles.buttonText} >{translate('continue')}</Text>
                 </LinearButton>
 
-                <TouchableOpacity style={styles.skipView} >
-                    <Text style={[styles.buttonText, { color: Theme.COLORS.white }]} >SKIP</Text>
+                <TouchableOpacity style={styles.skipView} onPress={() => navigation.navigate('Success')}>
+                    <Text style={[styles.buttonText, { color: Theme.COLORS.white }]} >{translate('skip')}</Text>
                 </TouchableOpacity>
             </View>
-            {/* </BlurView> */}
-        </ImageBackground>
+
+        </BgImage>
     )
 }
 
@@ -90,21 +91,16 @@ const styles = StyleSheet.create({
     IconContainer: {
         marginTop: 22,
         alignItems: 'center',
-        //height: height,
         flex: 1,
-        // backgroundColor: 'pink',
         width: (width * 90) / 100,
         alignSelf: 'center',
-        // position: 'absolute'
     },
     IconBox: {
-        //height: 115,
         width: 100,
         marginVertical: 8,
         alignItems: 'center',
-        // backgroundColor: 'yellow',
+        //backgroundColor: 'pink',
         marginHorizontal: (width * 1) / 100
-        //justifyContent: 'space-between'
     },
     brandNameText: {
         color: Theme.COLORS.white,
@@ -124,15 +120,16 @@ const styles = StyleSheet.create({
         height: 90,
         width: 90,
         borderRadius: 45,
-        //position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
         alignSelf: 'center',
         alignContent: 'center',
-        backgroundColor: Theme.COLORS.white,
+        position: 'absolute',
+        backgroundColor: Theme.COLORS.blur_transparent,
         borderColor: 'red',
         borderWidth: 2.5,
-        padding: 10
+        padding: 10,
+        marginTop: -5
     },
     imgTick: {
         position: 'absolute',
@@ -172,14 +169,12 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     buttonText: {
+        ...Theme.fontStyles.h3Bold,
         textAlign: "center",
-        fontSize: 12,
-        fontWeight: "700"
     },
     skipView: {
         height: 20,
         width: 60,
-        //backgroundColor: 'pink',
         justifyContent: 'center'
     }
 })

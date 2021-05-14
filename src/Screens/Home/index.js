@@ -4,6 +4,8 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import LinearButton from '../../Components/LinearButton'
 import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
+import { translate } from '@translations';
+import { BgImage, ProductCard, BrandLogo } from '@components/generic'
 
 
 const height = Dimensions.get('window').height;
@@ -12,20 +14,22 @@ const width = Dimensions.get('window').width;
 const Home = ({ navigation }) => {
     const data = [1, 2, 3, 4, 5]
     return (
-        <ImageBackground source={AppImages.app_bg} style={{ flex: 1, width: width, height: height, }}>
+        <BgImage>
             <View style={styles.container}>
 
                 <View style={styles.heading}>
-                    <Text style={styles.text}>SOUL'D</Text>
-                    <Text style={{ fontSize: 10, color: Theme.COLORS.white }}>REFER & EARN $20+</Text>
+                    <Text style={styles.appNameText}>{translate('appName')}</Text>
+                    <Text style={styles.greyText}>{translate('refer&earn')} $20+</Text>
                 </View>
                 <View style={styles.searchView}>
                     <View style={styles.searchBar}>
                         <View style={styles.searchIcon}>
                             <Icon name={'search1'} size={20} color={Theme.COLORS.white} />
                         </View>
-                        <TouchableOpacity onPress={() => { navigation.navigate('Search') }} style={{ color: Theme.COLORS.grey }}>
-                            <Text style={{ color: Theme.COLORS.grey }}>Search for black brands and products</Text>
+                        <TouchableOpacity
+                            onPress={() => { navigation.navigate('Search') }}
+                            style={{ color: Theme.COLORS.grey }}>
+                            <Text style={styles.searchText}>{translate('searchPlaceholder')}</Text>
                         </TouchableOpacity>
                     </View>
                 </View>
@@ -46,9 +50,9 @@ const Home = ({ navigation }) => {
                                             <Image source={AppImages.homeBrandLogo} style={styles.branImg} />
 
                                             <View style={styles.brandTextView}>
-                                                <Text style={{ fontWeight: 'bold', fontSize: 18 }}>RAYCON</Text>
-                                                <Text style={{ fontSize: 13, color: Theme.COLORS.grey }}>Extra cashback on the new Performer Earbugs</Text>
-                                                <LinearButton style={styles.buttons} onPress={() => console.log("object")}>
+                                                <Text style={{ ...Theme.fontStyles.h1Bold }}>RAYCON</Text>
+                                                <Text style={styles.greyText}>Extra cashback on the new Performer Earbugs</Text>
+                                                <LinearButton style={styles.buttons} >
                                                     <Text style={styles.buttonText} >10% Cash Back</Text>
                                                 </LinearButton>
                                             </View>
@@ -61,16 +65,18 @@ const Home = ({ navigation }) => {
                     </View>
 
                     <View style={styles.midImgView}>
-                        <ImageBackground source={AppImages.homeMid} style={styles.midImg} imageStyle={{ opacity: 0.5 }}>
-                            <Text style={[styles.text, { fontSize: 40, fontStyle: 'italic', marginLeft: -80 }]}>beautiful</Text>
-                            <Text style={[styles.text, { fontSize: 40, fontStyle: 'italic', marginTop: -15, marginLeft: 60 }]}>roots</Text>
+                        <ImageBackground source={AppImages.homeMid}
+                            style={styles.midImg}
+                            imageStyle={{ opacity: 0.5 }}>
+                            <Text style={[styles.midViewText, { marginLeft: -80 }]}>beautiful</Text>
+                            <Text style={[styles.midViewText, { marginTop: -15, marginLeft: 60 }]}>roots</Text>
                         </ImageBackground>
                     </View>
 
                     <View style={[styles.productHeading, { marginTop: -60 }]}>
-                        <Text style={{ color: Theme.COLORS.white, fontWeight: '700' }}>Hair products for black women</Text>
+                        <Text style={styles.whiteText}>Hair products for black women</Text>
                         <TouchableOpacity style={{ borderBottomColor: Theme.COLORS.white, borderBottomWidth: 1 }}>
-                            <Text style={{ color: Theme.COLORS.white }}>View All</Text>
+                            <Text style={{ color: Theme.COLORS.white }}>{translate('viewAll')}</Text>
                         </TouchableOpacity>
                     </View>
                     <View style={styles.productView}>
@@ -81,19 +87,7 @@ const Home = ({ navigation }) => {
                             renderItem={({ item, index }) => {
                                 return (
                                     <View >
-                                        <View style={styles.productCard}>
-                                            <Image source={AppImages.homeProduct} style={[styles.midImg, { borderRadius: 15 }]} />
-                                        </View>
-                                        <TouchableOpacity onPress={() => console.log("object")} style={{ marginVertical: 8 }}>
-                                            <LinearButton style={styles.buttons}>
-                                                <Text style={styles.buttonText} >10% Cash Back</Text>
-                                            </LinearButton>
-                                        </TouchableOpacity>
-                                        <View>
-                                            <Text style={styles.text}>Title</Text>
-                                            <Text style={styles.text}>Description</Text>
-                                            <Text style={styles.text}>Price</Text>
-                                        </View>
+                                        <ProductCard />
                                     </View>
 
                                 )
@@ -103,9 +97,9 @@ const Home = ({ navigation }) => {
 
                     <View style={{ backgroundColor: Theme.COLORS.bg_grey }}>
                         <View style={[styles.productHeading, { marginTop: 20 }]}>
-                            <Text style={{ color: Theme.COLORS.white, fontWeight: '700' }}>Most Popular Brands</Text>
+                            <Text style={styles.whiteText}>{translate('popularBrand')}</Text>
                             <TouchableOpacity style={{ borderBottomColor: Theme.COLORS.white, borderBottomWidth: 1 }}>
-                                <Text style={{ color: Theme.COLORS.white }}>View All</Text>
+                                <Text style={{ color: Theme.COLORS.white }}>{translate('viewAll')}</Text>
                             </TouchableOpacity>
                         </View>
                         <View style={styles.popularBrandView}>
@@ -116,23 +110,19 @@ const Home = ({ navigation }) => {
                                 showsHorizontalScrollIndicator={false}
                                 renderItem={({ item, index }) => {
                                     return (
-                                        <View>
-                                            <TouchableOpacity style={styles.popularBrandIcon}>
-
-                                            </TouchableOpacity>
+                                        <View style={{ marginRight: 20 }}>
+                                            <BrandLogo></BrandLogo>
                                         </View>
                                     )
                                 }}
                             />
                         </View>
                     </View>
-                    <Text>Hello</Text>
-                    <Text>Hello</Text>
-                    <Text>Hello</Text>
+                    <View style={{ height: 60, width: width }}></View>
                 </ScrollView>
             </View>
 
-        </ImageBackground >
+        </BgImage>
     )
 }
 const styles = StyleSheet.create({
@@ -140,11 +130,34 @@ const styles = StyleSheet.create({
         marginTop: (height * 3) / 100,
         paddingHorizontal: (width * 4) / 100,
     },
+    appNameText: {
+        ...Theme.fontStyles.h1Bold,
+        color: Theme.COLORS.white,
+        fontStyle: 'italic'
+    },
+    searchText: {
+        ...Theme.fontStyles.h3Bold,
+        color: Theme.COLORS.grey
+    },
+    whiteText: {
+        ...Theme.fontStyles.h3Bold,
+        color: Theme.COLORS.white
+    },
+    greyText: {
+        ...Theme.fontStyles.h4Bold,
+        color: Theme.COLORS.grey
+    },
     heading: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'center',
         //backgroundColor: 'pink'
+    },
+    midViewText: {
+        ...Theme.fontStyles.h1Bold,
+        fontSize: 40,
+        fontStyle: 'italic',
+        color: Theme.COLORS.white
     },
     text: {
         color: Theme.COLORS.white,
@@ -197,18 +210,6 @@ const styles = StyleSheet.create({
         marginHorizontal: 15,
         //backgroundColor: 'pink'
     },
-    buttons: {
-        height: 17,
-        width: 80,
-        borderRadius: 5,
-        justifyContent: "center",
-        alignSelf: 'flex-start'
-    },
-    buttonText: {
-        textAlign: "center",
-        fontSize: 10,
-        fontWeight: "700",
-    },
     midImgView: {
         height: 280,
         width: width,
@@ -233,25 +234,24 @@ const styles = StyleSheet.create({
         //backgroundColor: 'green',
 
     },
-    productCard: {
-        height: 150,
-        width: (width * 37) / 100,
-        borderRadius: 10,
-        backgroundColor: Theme.COLORS.white,
-        marginRight: 10
-    },
+
     popularBrandView: {
         //height: 100,
         width: width,
         marginLeft: (width * 4) / 100,
         marginVertical: 20,
     },
-    popularBrandIcon: {
-        height: 80,
+
+    buttons: {
+        height: 17,
         width: 80,
-        borderRadius: 40,
-        backgroundColor: 'pink',
-        marginRight: 15
-    }
+        borderRadius: 5,
+        justifyContent: "center",
+        alignSelf: 'flex-start'
+    },
+    buttonText: {
+        ...Theme.fontStyles.h5Bold,
+        textAlign: "center",
+    },
 })
 export default Home

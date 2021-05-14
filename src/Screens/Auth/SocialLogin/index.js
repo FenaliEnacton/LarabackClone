@@ -4,16 +4,15 @@ import LoginHeader from '../../../Components/loginHeader'
 import { translate } from '@translations';
 import Icon from 'react-native-vector-icons/AntDesign';
 import FbIcon from 'react-native-vector-icons/MaterialIcons';
-import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
-import { SocialLoginBtn } from '@components/generic'
+import { SocialLoginBtn, BgImage } from '@components/generic'
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 const SocialLogin = ({ navigation }) => {
     return (
         // <View>
-        <ImageBackground source={AppImages.app_bg} style={styles.bg_img}>
+        <BgImage>
             <LoginHeader step={"STEP 1"} heading={translate('createAccount')} desc={translate('createAccountToContinue')} />
 
             <View style={styles.EmailView}>
@@ -52,21 +51,16 @@ const SocialLogin = ({ navigation }) => {
 
 
             <View style={styles.alreadyAccountView}>
-                <Text style={{ color: 'grey', fontSize: 12 }}>{translate('alreadyHaveAccount')}</Text>
+                <Text style={styles.greyText}>{translate('alreadyHaveAccount')}</Text>
                 <TouchableOpacity onPress={() => navigation.navigate("Login")}>
                     <Text style={styles.whiteText}>{translate('login')}</Text>
                 </TouchableOpacity>
             </View>
-        </ImageBackground >
+        </BgImage >
         //</View >
     )
 }
 const styles = StyleSheet.create({
-    bg_img: {
-        flex: 1,
-        width: width,
-        height: height,
-    },
     EmailView: {
         alignItems: 'center',
         marginVertical: 15
@@ -104,6 +98,10 @@ const styles = StyleSheet.create({
     whiteText: {
         ...Theme.fontStyles.h3Regular,
         color: Theme.COLORS.white
+    },
+    greyText: {
+        ...Theme.fontStyles.h4Regular,
+        color: Theme.COLORS.grey
     }
 })
 export default SocialLogin
