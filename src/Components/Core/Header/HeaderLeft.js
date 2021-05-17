@@ -3,9 +3,9 @@ import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 
 const HeaderLeft = (props) => {
     return (
-        <View style={styles.IconView} onPress={props.onPress}>
+        <TouchableOpacity style={styles.IconView} onPress={props.onPress}>
             {props.children}
-        </View>
+        </TouchableOpacity>
     )
 }
 const styles = StyleSheet.create({

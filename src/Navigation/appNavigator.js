@@ -19,8 +19,9 @@ import Home from '../Screens/Home'
 import StoreInfo from '../Screens/StoreInfo'
 import Search from '../Screens/Search'
 import Profile from '../Screens/Profile'
+import Redemption from '../Screens/Redemption'
 
-import CashBackActivities from '../Screens/CashbackActivities'
+import CashbackActivities from '../Screens/CashbackActivities'
 import CategoryDetails from '../Screens/CategoryDetails'
 
 const Tab = createBottomTabNavigator();
@@ -189,8 +190,9 @@ class AppNavigator extends Component {
           <Stack.Screen name="Home" component={MyTabs} />
           <Stack.Screen name="StoreInfo" component={StoreInfo} />
           <Stack.Screen name="CategoryDetails" component={CategoryDetails} />
-          <Stack.Screen name="CashBackActivities" component={CashBackActivities} />
+          <Stack.Screen name="CashbackActivities" component={CashbackActivities} />
           <Stack.Screen name="ForgetPassword" component={ForgetPassword} />
+          <Stack.Screen name="Redemption" component={Redemption} />
         </MainStack.Navigator>
       </NavigationContainer>
     );

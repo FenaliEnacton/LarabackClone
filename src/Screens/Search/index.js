@@ -73,18 +73,19 @@ const index = ({ navigation }) => {
                         //console.log("Index:", index);
                         return (
                             <View >
-                                <View style={{ flexDirection: "row" }} >
-                                    <TouchableOpacity style={[styles.categoryCard]} onPress={() => { navigation.navigate('CategoryDetails') }}>
-                                        <ImageBackground borderRadius={10} source={AppImages.homeBrandLogo} style={styles.brandImg} >
-                                            <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
-                                                colors={[Theme.COLORS_SET[2][index % Theme.COLORS_SET[2].length], Theme.COLORS_SET[4][index % Theme.COLORS_SET[4].length]]}
-                                                style={[styles.categoryCard, { position: 'absolute', opacity: 0.6 }]}>
-                                            </LinearGradient>
-                                            <Text>Hair Care</Text>
-                                        </ImageBackground>
-                                    </TouchableOpacity>
-                                    <View style={{ padding: (width * 2) / 100 }}></View>
-                                </View>
+                                <TouchableOpacity style={[styles.categoryCard,
+                                index % 2 == 0 ? { marginRight: (width * 3) / 100 } : null
+                                ]}
+                                    onPress={() => { navigation.navigate('CategoryDetails') }}>
+                                    <ImageBackground borderRadius={10} source={AppImages.homeBrandLogo} style={styles.brandImg} >
+                                        <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}
+                                            colors={[Theme.COLORS_SET[2][index % Theme.COLORS_SET[2].length], Theme.COLORS_SET[4][index % Theme.COLORS_SET[4].length]]}
+                                            style={[styles.categoryCard, { position: 'absolute', opacity: 0.6 }]}>
+                                        </LinearGradient>
+                                        <Text>Hair Care</Text>
+                                    </ImageBackground>
+                                </TouchableOpacity>
+
                                 {data.length - 1 == index ? <View style={{ height: 60, width: width }}></View> : null}
                             </View>
                         )
@@ -150,19 +151,19 @@ const styles = StyleSheet.create({
     },
     categoryView: {
         marginTop: 20,
-        marginHorizontal: (width * 4) / 100,
+        marginHorizontal: (width * 3) / 100,
         flex: 1
     },
     categoryCard: {
-        height: 75,
-        width: (width * 44) / 100,
+        height: 80,
+        width: (width * 45) / 100,
         backgroundColor: Theme.COLORS.white,
         marginBottom: (width * 4) / 100,
         borderRadius: 10,
     },
     brandImg: {
-        height: 75,
-        width: (width * 44) / 100,
+        height: 80,
+        width: (width * 45) / 100,
         marginBottom: (width * 4) / 100,
         borderRadius: 10,
         justifyContent: 'center',

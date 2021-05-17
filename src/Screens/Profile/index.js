@@ -14,11 +14,11 @@ import { BgImage } from '@components/generic'
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-const index = ({ navigation }) => {
+const Profile = ({ navigation }) => {
     return (
         <BgImage>
             <Header>
-                <Text style={styles.whiteText}>{translate('profile')}</Text>
+                <Text style={styles.routeNameText}>{translate('profile')}</Text>
             </Header>
 
             <ScrollView>
@@ -32,12 +32,12 @@ const index = ({ navigation }) => {
                     <LinearGradient start={{ x: 0.7, y: 0.0 }} end={{ x: 0.0, y: 0.7 }} colors={['#4AADD7', '#4BD95A']} style={styles.cbBalance}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
                             <View>
-                                <Text style={styles.whiteText}>{translate('cashbackBalance')}</Text>
+                                <Text style={styles.cbTitleText}>{translate('cashbackBalance')}</Text>
                                 <Text style={[styles.whiteText, { fontSize: 35, fontStyle: 'italic' }]}>2,000 pts</Text>
                             </View>
                         </View>
-                        <TouchableOpacity style={styles.redeemBtn}>
-                            <Text style={[styles.whiteText]}>{translate('redeemCoins')}</Text>
+                        <TouchableOpacity style={styles.redeemBtn} onPress={() => { navigation.navigate('Redemption') }}>
+                            <Text style={[styles.cbTitleText]}>{translate('redeemCoins')}</Text>
                         </TouchableOpacity>
                     </LinearGradient>
                 </View>
@@ -45,23 +45,24 @@ const index = ({ navigation }) => {
                 <View style={{ marginTop: 10 }}>
                     {ProfileCBRoutes.map((e, index) => {
                         return (
-                            <>
+                            <View key={index.toString()}>
                                 {e.childRoutes ?
                                     (
-                                        <View key={index.toString()}>
+                                        <>
                                             {e.childRoutes.map((item, i) => {
                                                 return (
                                                     <TouchableOpacity
                                                         style={[styles.listGreyBox,
                                                         i == 0 ? { marginTop: 20 } : null,
-                                                        e.childRoutes.length - 1 != i ? { borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 } : null]}
-                                                        onPress={() => { navigation.navigate(item.route) }}>
+                                                        e.childRoutes.length - 1 != i ? { borderBottomColor: Theme.COLORS.border_light, borderBottomWidth: 0.3 } : null]}
+                                                        onPress={() => { navigation.navigate(item.route) }}
+                                                        key={i.toString()}>
                                                         <Text style={styles.routeNameText}>{item.title}</Text>
                                                         <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
                                                     </TouchableOpacity>
                                                 )
                                             })}
-                                        </View>
+                                        </>
                                     )
                                     :
                                     <TouchableOpacity style={[styles.listGreyBox, { marginTop: 20 }]}
@@ -71,7 +72,7 @@ const index = ({ navigation }) => {
                                         <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
                                     </TouchableOpacity>
                                 }
-                            </>
+                            </View>
                         )
                     })}
                 </View>
@@ -106,6 +107,10 @@ const styles = StyleSheet.create({
         width: (width * 90) / 100,
         alignSelf: 'center',
         marginTop: 30
+    },
+    cbTitleText: {
+        ...Theme.fontStyles.h3Bold,
+        color: Theme.COLORS.white
     },
     userName: {
         flexDirection: 'row',
@@ -154,4 +159,4 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     }
 })
-export default index
+export default Profile

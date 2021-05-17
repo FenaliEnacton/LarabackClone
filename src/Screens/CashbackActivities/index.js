@@ -2,12 +2,13 @@ import React from 'react'
 import { View, Text, StyleSheet, Dimensions, ImageBackground, FlatList, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/Entypo';
 import { Theme } from '@assets/Theme'
-import { AppImages } from '@assets/Images'
+import { translate } from '@translations';
 import {
     Header,
     HeaderLeft,
     HeaderBackButton
 } from '@components/core'
+import { BgImage } from '@components/generic'
 import RightIcon from 'react-native-vector-icons/EvilIcons';
 
 const height = Dimensions.get('window').height;
@@ -17,12 +18,12 @@ const CashbackActivities = ({ navigation }) => {
     const data = [1, 2, 3, 4]
     const lastElement = data[data.length - 1]
     return (
-        <ImageBackground source={AppImages.app_bg} style={{ flex: 1, width: width, height: height, }}>
+        <BgImage>
             <Header>
                 <HeaderLeft >
                     <HeaderBackButton onPress={() => { navigation.goBack() }} />
                 </HeaderLeft>
-                <Text style={{ color: 'white' }}>CASH BACK ACTIVITIES</Text>
+                <Text style={styles.titleText}>{translate('cashbackActivites')}</Text>
             </Header>
 
             <View style={styles.activityCard}>
@@ -48,7 +49,7 @@ const CashbackActivities = ({ navigation }) => {
                                     </View>
                                     <View style={styles.cashbackStatus}>
                                         <Text style={styles.whiteText}>Sat,June 19,2021</Text>
-                                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                                        <View style={styles.cbStatusView}>
                                             <View
                                                 style={[
                                                     styles.statusButton,
@@ -66,10 +67,10 @@ const CashbackActivities = ({ navigation }) => {
                 />
             </View>
             <TouchableOpacity style={styles.listGreyBox}>
-                <Text style={[styles.whiteText, { fontSize: 15 }]}>Cash Back Payment</Text>
+                <Text style={styles.titleText}>Cash Back Payment</Text>
                 <RightIcon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
             </TouchableOpacity>
-        </ImageBackground>
+        </BgImage>
     )
 }
 const styles = StyleSheet.create({
@@ -98,6 +99,11 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 30,
         borderBottomRightRadius: 30
     },
+    cbStatusView: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
     userDetails: {
         flex: 1,
         marginLeft: 10,
@@ -112,8 +118,8 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end'
     },
     whiteText: {
+        ...Theme.fontStyles.h4Regular,
         color: Theme.COLORS.white,
-        fontSize: 12
     },
     statusButton: {
         paddingHorizontal: 10,
@@ -124,6 +130,7 @@ const styles = StyleSheet.create({
         marginTop: 5,
     },
     statusText: {
+        ...Theme.fontStyles.h5Regular,
         fontSize: 10,
         textTransform: 'capitalize',
     },
@@ -137,6 +144,10 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         marginTop: 20
+    },
+    titleText: {
+        ...Theme.fontStyles.h2Regular,
+        color: Theme.COLORS.white
     },
 
 })

@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, ScrollView} from 'react-native';
-import {Theme} from '@assets/Theme';
+import { StyleSheet, ScrollView } from 'react-native';
+import { Theme } from '@assets/Theme';
 
 const ScrollContent = props => {
   return (
@@ -18,7 +18,7 @@ export default ScrollContent;
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    marginTop: 60,
+    //marginTop: 60,
     backgroundColor: Theme.COLORS.background,
     flex: 1,
   },

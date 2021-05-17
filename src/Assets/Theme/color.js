@@ -8,7 +8,8 @@ export const COLORS = {
     facebook: '#4267B2',
     error: '#e63946',
     primary: '#4BD95A',
-    secondory: '#4AADD7'
+    secondory: '#4AADD7',
+    border_light: '#5A5B5B',
 
 }
 export const COLORS_SET = {

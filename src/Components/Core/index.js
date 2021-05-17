@@ -16,6 +16,7 @@ import Loader from './Loader';
 import Toast from './Toast';
 import Button from './Button';
 import RadioButton from './RadioButton';
+import TransparentModal from './TransparentModal'
 
 module.exports = {
   ...Header,
@@ -36,4 +37,5 @@ module.exports = {
   SearchButton,
   Button,
   RadioButton,
+  TransparentModal
 };

@@ -7,4 +7,5 @@ export const AppImages = {
     homeMid: require('./homeMid.jpg'),
     homeProduct: require('./homeProduct.jpg'),
     welcome1: require('./welcome1.jpg'),
+    paypal: require('./paypal.png')
 };
