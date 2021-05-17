@@ -37,5 +37,7 @@
   "browseCategory": "Browse Category",
   "shopNow": "SHOP NOW",
   "cashbackBalance": "CASH BACK BALANCE",
-  "redeemCoins": "REDEEM SHOULD COINS"
+  "redeemCoins": "REDEEM SHOULD COINS",
+  "profile": "PROFILE",
+  "logout": "LOG OUT"
 }

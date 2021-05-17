@@ -8,7 +8,7 @@ import { Theme } from '@assets/Theme'
 import LinearGradient from 'react-native-linear-gradient';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import { translate } from '@translations';
-import RouterList from '@assets/RouterList'
+import { ProfileCBRoutes } from '@assets/RouterList'
 import { BgImage } from '@components/generic'
 
 const height = Dimensions.get('window').height;
@@ -18,7 +18,7 @@ const index = ({ navigation }) => {
     return (
         <BgImage>
             <Header>
-                <Text style={[styles.whiteText, { fontWeight: 'bold' }]}>PROFILE</Text>
+                <Text style={styles.whiteText}>{translate('profile')}</Text>
             </Header>
 
             <ScrollView>
@@ -42,66 +42,42 @@ const index = ({ navigation }) => {
                     </LinearGradient>
                 </View>
 
-                {/* {RouterList.map((e, index) => {
-                    return (
-                        <TouchableOpacity style={[styles.listGreyBox, { marginTop: 30, borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]}
-                            onPress={() => { navigation.navigate('CashBackActivities') }}
-                            key={index.toString()}>
-                            <Text style={styles.whiteText}>{e.title}</Text>
-                            <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                        </TouchableOpacity>
-                    )
-                })} */}
-                <TouchableOpacity style={[styles.listGreyBox, { marginTop: 30, borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]} onPress={() => { navigation.navigate('CashBackActivities') }}>
-                    <Text style={styles.whiteText}>Cash Back Activities</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                </TouchableOpacity>
-                <View style={[styles.listGreyBox, { borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]}>
-                    <Text style={styles.whiteText}>Cash back Payment</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                </View>
-                <View style={styles.listGreyBox}>
-                    <Text style={styles.whiteText}>Missing Cashback</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                </View>
-
-                <View style={[styles.listGreyBox, { marginTop: 20 }]}>
-                    <Text style={styles.whiteText}>Favorites</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                </View>
-
-                <View style={[styles.listGreyBox, { marginTop: 20, borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]}>
-                    <Text style={styles.whiteText}>Refer & Earn</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                </View>
-                <View style={styles.listGreyBox}>
-                    <Text style={styles.whiteText}>Share & Earn</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                </View>
-
-                <View style={[styles.listGreyBox, { marginTop: 20, borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]}>
-                    <Text style={styles.whiteText}>FAQ's</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                </View>
-                <View style={[styles.listGreyBox, { borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]}>
-                    <Text style={styles.whiteText}>Contact Us</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                </View>
-                <View style={[styles.listGreyBox, { borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]}>
-                    <Text style={styles.whiteText}>Account Settings</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                </View>
-                <View style={[styles.listGreyBox, { borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]}>
-                    <Text style={styles.whiteText}>Privacy Policy</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
-                </View>
-                <View style={[styles.listGreyBox, { borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 }]}>
-                    <Text style={styles.whiteText}>Terms of Service</Text>
-                    <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
+                <View style={{ marginTop: 10 }}>
+                    {ProfileCBRoutes.map((e, index) => {
+                        return (
+                            <>
+                                {e.childRoutes ?
+                                    (
+                                        <View key={index.toString()}>
+                                            {e.childRoutes.map((item, i) => {
+                                                return (
+                                                    <TouchableOpacity
+                                                        style={[styles.listGreyBox,
+                                                        i == 0 ? { marginTop: 20 } : null,
+                                                        e.childRoutes.length - 1 != i ? { borderBottomColor: '#5A5B5B', borderBottomWidth: 0.3 } : null]}
+                                                        onPress={() => { navigation.navigate(item.route) }}>
+                                                        <Text style={styles.routeNameText}>{item.title}</Text>
+                                                        <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
+                                                    </TouchableOpacity>
+                                                )
+                                            })}
+                                        </View>
+                                    )
+                                    :
+                                    <TouchableOpacity style={[styles.listGreyBox, { marginTop: 20 }]}
+                                        onPress={() => { navigation.navigate(e.route) }}
+                                        key={index.toString()}>
+                                        <Text style={styles.routeNameText}>{e.title}</Text>
+                                        <Icon name={'chevron-right'} size={25} color={Theme.COLORS.white} />
+                                    </TouchableOpacity>
+                                }
+                            </>
+                        )
+                    })}
                 </View>
 
                 <TouchableOpacity style={styles.logoutView}>
-                    <Text style={[styles.whiteText, { fontSize: 12 }]}>LOG OUT</Text>
+                    <Text style={[styles.whiteText, { fontSize: 12 }]}>{translate('logout')}</Text>
                 </TouchableOpacity>
                 <View style={{ height: 60, width: width }}></View>
             </ScrollView>
@@ -118,7 +94,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     whiteText: {
-        ...Theme.fontStyles.h1Ragular,
+        ...Theme.fontStyles.h1Regular,
         color: Theme.COLORS.white,
     },
     userNameText: {
@@ -134,6 +110,10 @@ const styles = StyleSheet.create({
     userName: {
         flexDirection: 'row',
         alignItems: 'center'
+    },
+    routeNameText: {
+        ...Theme.fontStyles.h2Regular,
+        color: Theme.COLORS.white
     },
     cbBalance: {
         height: 150,
