@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, Text, View, ImageBackground, Dimensions, FlatList, TouchableOpacity, Image, ScrollView } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient';
 import { AppImages } from '@assets/Images';
-import LinearButton from '../../Components/LinearButton';
+import LinearButton from '../../Components/Core/LinearButton';
 import { Theme } from '@assets/Theme';
 import Icon from 'react-native-vector-icons/AntDesign';
 import IconLike from 'react-native-vector-icons/Entypo';

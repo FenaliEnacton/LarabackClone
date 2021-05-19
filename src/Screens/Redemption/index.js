@@ -12,7 +12,7 @@ import { translate } from '@translations';
 import { BgImage } from '@components/generic'
 import Icon from 'react-native-vector-icons/AntDesign';
 import DownIcon from 'react-native-vector-icons/Feather';
-import LinearButton from '../../Components/LinearButton'
+import LinearButton from '../../Components/Core/LinearButton'
 import ModalDropdown from 'react-native-modal-dropdown';
 
 const height = Dimensions.get('window').height;
@@ -109,7 +109,7 @@ const Redemption = ({ navigation }) => {
                             <ModalDropdown
                                 ref={subject}
                                 options={amount}
-                                defaultValue={'Select Amount'}
+                                defaultValue={selectedAmt ? selectedAmt : "Select Amount"}
                                 style={styles.dropdownModalView}
                                 textStyle={styles.greyText}
                                 dropdownStyle={styles.dropdownValStyle}

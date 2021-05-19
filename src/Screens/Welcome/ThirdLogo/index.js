@@ -7,9 +7,9 @@ import { ScrollView } from 'react-native-gesture-handler'
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-const FirstLogo = () => {
+const ThirdLogo = () => {
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
-    const numColumns = Math.ceil(data.length / 3);
+    const numColumns = Math.ceil(data.length / 2);
     //console.log("object", numColumns * 2)
     return (
         <View style={styles.contentView} >
@@ -31,10 +31,10 @@ const FirstLogo = () => {
                             < View >
                                 <View style={{ flexDirection: "row" }} >
                                     <View style={
-                                        index == 0 || index == (numColumns * 2) ? { marginLeft: 30 } : { marginLeft: 17 }} >
+                                        index == 0 || index == (numColumns * 2) ? { marginLeft: 25 } : { marginLeft: 10 }} >
                                         <View style={[styles.logoView,
-                                        index == numColumns ? { marginLeft: -20 } : null]} >
-                                            <Image source={AppImages.cookieLogo} style={styles.popularBrandIcon} />
+                                        index == numColumns ? { marginLeft: 60 } : null]} >
+                                            <Image source={AppImages.melaLogo} style={styles.popularBrandIcon} />
                                         </View>
                                     </View>
                                 </View>
@@ -55,18 +55,19 @@ const styles = StyleSheet.create({
         //backgroundColor: 'red'
     },
     logoView: {
-        height: 50,
-        width: 50,
-        borderRadius: 50,
+        height: 45,
+        width: 80,
+        borderRadius: 10,
         backgroundColor: Theme.COLORS.white,
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginTop: 15
 
     },
     popularBrandIcon: {
         height: '100%',
         width: '100%',
-        borderRadius: 40,
+        borderRadius: 10,
     },
 })
-export default FirstLogo
+export default ThirdLogo

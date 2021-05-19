@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, ScrollView, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Image, FlatList, TextInput } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
-import LinearButton from '../../Components/LinearButton'
+import LinearButton from '../../Components/Core/LinearButton'
 import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
 import { translate } from '@translations';
@@ -98,7 +98,9 @@ const Home = ({ navigation }) => {
                     <View style={{ backgroundColor: Theme.COLORS.bg_grey }}>
                         <View style={[styles.productHeading, { marginTop: 20 }]}>
                             <Text style={styles.whiteText}>{translate('popularBrand')}</Text>
-                            <TouchableOpacity style={{ borderBottomColor: Theme.COLORS.white, borderBottomWidth: 1 }}>
+                            <TouchableOpacity
+                                style={{ borderBottomColor: Theme.COLORS.white, borderBottomWidth: 1 }}
+                                onPress={() => { navigation.navigate('AllBrands') }}>
                                 <Text style={{ color: Theme.COLORS.white }}>{translate('viewAll')}</Text>
                             </TouchableOpacity>
                         </View>
@@ -111,7 +113,7 @@ const Home = ({ navigation }) => {
                                 renderItem={({ item, index }) => {
                                     return (
                                         <View style={{ marginRight: 20 }}>
-                                            <BrandLogo>
+                                            <BrandLogo onPress={() => { navigation.navigate('StoreInfo') }}>
                                                 <Image source={AppImages.melaLogo} style={styles.popularBrandIcon} />
                                             </BrandLogo>
                                         </View>

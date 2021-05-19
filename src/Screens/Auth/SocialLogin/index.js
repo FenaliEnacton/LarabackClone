@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, ImageBackground, Dimensions, StyleSheet, TouchableOpacity } from 'react-native'
-import LoginHeader from '../../../Components/loginHeader'
+import LoginHeader from '../../../Components/Core/LoginHeader'
 import { translate } from '@translations';
 import Icon from 'react-native-vector-icons/AntDesign';
 import FbIcon from 'react-native-vector-icons/MaterialIcons';

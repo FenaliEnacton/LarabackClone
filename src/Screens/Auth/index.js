@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { View, Text, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, TextInput, Touchable } from 'react-native'
-import LoginHeader from '../../Components/loginHeader'
+import LoginHeader from '../../Components/Core/LoginHeader'
 import { translate } from '@translations';
 import { Formik, ErrorMessage } from 'formik';
 import { string, object, date } from 'yup';
-import TextBox from '../../Components/TextBox'
-import Button from '../../Components/LinearButton'
+import TextBox from '../../Components/Core/TextBox'
+import Button from '../../Components/Core/LinearButton'
 import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
 import { BgImage } from '@components/generic'

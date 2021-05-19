@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native'
+import { StyleSheet, Text, View, Dimensions, FlatList, Image } from 'react-native'
 import { AppImages } from '@assets/Images';
 import { Theme } from '@assets/Theme';
 import { ScrollView } from 'react-native-gesture-handler'
@@ -7,7 +7,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
-const SecondLogo = () => {
+const FourthLogo = () => {
     const data = [1, 2, 3, 4, 5, 6, 7, 8, 0]
     const numColumns = data.length
     return (
@@ -33,7 +33,7 @@ const SecondLogo = () => {
                                 <View style={[styles.boxView,
                                 index % 2 != 0 ? { marginTop: 20 } : null
                                 ]}>
-
+                                    <Image source={AppImages.melaLogo} style={styles.popularBrandIcon} />
                                 </View>
                             </View>
                         )
@@ -48,13 +48,16 @@ const SecondLogo = () => {
 }
 const styles = StyleSheet.create({
     boxView: {
-        height: 50,
-        width: 65,
+        height: 70,
+        width: 90,
         borderRadius: 10,
         backgroundColor: Theme.COLORS.white,
         marginLeft: 10,
-
-
-    }
+    },
+    popularBrandIcon: {
+        height: '100%',
+        width: '100%',
+        borderRadius: 10,
+    },
 })
-export default SecondLogo
+export default FourthLogo

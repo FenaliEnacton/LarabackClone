@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Touchable, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import LottieView from 'lottie-react-native';
-import LinearButton from '../../Components/LinearButton';
+import LinearButton from '../../Components/Core/LinearButton';
 import { translate } from '@translations';
 import { Theme } from '@assets/Theme';
 import { BgImage } from '@components/generic'

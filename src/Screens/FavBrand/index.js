@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { View, Text, Dimensions, StyleSheet, FlatList, TouchableOpacity, Image, ScrollView } from 'react-native'
-import LoginHeader from '../../Components/loginHeader'
+import LoginHeader from '../../Components/Core/LoginHeader'
 import { BlurView } from "@react-native-community/blur";
 import { translate } from '@translations';
 import { AppImages } from '@assets/Images';
 import Icon from 'react-native-vector-icons/Feather';
-import LinearButton from '../../Components/LinearButton'
+import LinearButton from '../../Components/Core/LinearButton'
 import { Theme } from '@assets/Theme';
 import { BgImage, BrandLogo } from '@components/generic'
 import LinearGradient from 'react-native-linear-gradient';

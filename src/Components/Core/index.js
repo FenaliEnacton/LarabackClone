@@ -17,6 +17,9 @@ import Toast from './Toast';
 import Button from './Button';
 import RadioButton from './RadioButton';
 import TransparentModal from './TransparentModal'
+import NavBar from './NavBar'
+import LinearButton from './LinearButton'
+import TextBox from './TextBox'
 
 module.exports = {
   ...Header,
@@ -37,5 +40,8 @@ module.exports = {
   SearchButton,
   Button,
   RadioButton,
-  TransparentModal
+  TransparentModal,
+  NavBar,
+  LinearButton,
+  TextBox
 };

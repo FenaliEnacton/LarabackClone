@@ -19,13 +19,14 @@ export const onBoardingData = [
   {
     id: 3,
     image: AppImages.welcome1,
-    title: 'Cash out!',
+    headerIcon: 3,
+    title: 'Cash out!\nTreat Yourself!',
     desc: 'Earn poin everytime you shop at our 100+ Black Owned businessess - and get even more points with your special offers.',
   },
   {
     id: 4,
     image: AppImages.welcome1,
-    headerIcon: 2,
+    headerIcon: 4,
     title: 'Donate to your favorite causes',
     desc: 'Earn poin everytime you shop at our 100+ Black Owned businessess - and get even more points with your special offers.',
   },

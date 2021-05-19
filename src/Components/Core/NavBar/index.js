@@ -38,7 +38,7 @@ const NavBar = ({ navigation, state }) => {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={styles.iconView} onPress={() => navigation.navigate('Profile')}>
-                    {state.index == 3 || state.index == 4 ? <ProfileIcon name={'user-circle-o'} size={22} color={'white'} /> : <ProfileIcon name={'user-circle-o'} size={22} color={'grey'} />}
+                    {state.index == 3 ? <ProfileIcon name={'user-circle-o'} size={22} color={'white'} /> : <ProfileIcon name={'user-circle-o'} size={22} color={'grey'} />}
                     <Text style={styles.text}>Profile</Text>
                 </TouchableOpacity>
             </View>
