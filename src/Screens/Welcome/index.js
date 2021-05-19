@@ -1,14 +1,14 @@
 import React from 'react'
 import { StyleSheet, Text, View, ImageBackground, Dimensions, FlatList, TouchableOpacity } from 'react-native'
-import LinearButton from '../../Components/LinearButton'
+import LinearButton from '../../Components/Core/LinearButton'
 import { AppImages } from '@assets/Images';
 import { translate } from '@translations';
 import { Theme } from '@assets/Theme';
 import FirstLogo from './FirstLogo'
 import { onBoardingData } from '@assets/AppDataConfig';
 import Swiper from 'react-native-swiper';
-import SecondLogo from './SecondLogo';
-
+import ThirdLogo from './ThirdLogo'
+import FourthLogo from './FourthLogo';
 
 const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
@@ -36,10 +36,13 @@ const Welcome = ({ navigation }) => {
                         <View style={{ flex: 6, justifyContent: 'flex-end' }}>
                             <View style={{ marginBottom: 40 }}>
                                 {e.headerIcon == 1 ? <FirstLogo /> : null}
-                                {e.headerIcon == 2 ? <SecondLogo /> : null}
+                                {e.headerIcon == 3 ? <ThirdLogo /> : null}
+                                {e.headerIcon == 4 ? <FourthLogo /> : null}
                             </View>
-                            <View style={{ marginBottom: 90 }}>
-                                <Text style={styles.titleText}>{e.title}</Text>
+                            <View style={{ marginBottom: 80 }}>
+                                <View style={{ height: 80, justifyContent: 'flex-end' }}>
+                                    <Text style={styles.titleText}>{e.title}</Text>
+                                </View>
                                 <Text style={styles.descText}>{e.desc}</Text>
                             </View>
                         </View>
@@ -47,7 +50,7 @@ const Welcome = ({ navigation }) => {
                             <LinearButton onPress={() => navigation.navigate('SocialLogin')} >
                                 <Text style={styles.buttonText} >{translate('getStarted')}</Text>
                             </LinearButton>
-                            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('FavBrand')}>
+                            <TouchableOpacity style={styles.buttons} onPress={() => navigation.navigate('Login')}>
                                 <Text style={[styles.buttonText, { color: 'white' }]} >{translate('login')}</Text>
                             </TouchableOpacity>
                         </View>
@@ -93,7 +96,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center',
-        color: Theme.COLORS.white,
+        color: Theme.COLORS.primary,
         paddingHorizontal: 50
     },
     descText: {
