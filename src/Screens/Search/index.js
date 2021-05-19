@@ -1,5 +1,5 @@
-import React from 'react'
-import { View, Text, ScrollView, TextInput, ImageBackground, Dimensions, StyleSheet, TouchableOpacity, Image, FlatList, Keyboard } from 'react-native'
+import React, { useRef, useEffect } from 'react'
+import { View, Text, ScrollView, TextInput, ImageBackground, InteractionManager, Dimensions, StyleSheet, TouchableOpacity, Image, FlatList, Keyboard } from 'react-native'
 import Icon from 'react-native-vector-icons/AntDesign';
 import LinearGradient from 'react-native-linear-gradient';
 import { AppImages } from '@assets/Images';
@@ -11,8 +11,11 @@ const height = Dimensions.get('window').height;
 const width = Dimensions.get('window').width;
 
 const index = ({ navigation }) => {
-    const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
+    const data = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12,]
+    const inputRef = useRef('')
+    useEffect(() => {
+        inputRef.current.focus();
+    }, [])
     return (
         <BgImage>
             <View style={styles.searchView}>
@@ -20,7 +23,10 @@ const index = ({ navigation }) => {
                     <TouchableOpacity style={styles.searchIcon}>
                         <Icon name={'search1'} size={20} color={Theme.COLORS.white} />
                     </TouchableOpacity>
+
                     <TextInput style={{ flex: 1 }}
+                        ref={inputRef}
+                        autoFocus
                         placeholder={translate('searchPlaceholder')}
                         placeholderTextColor={Theme.COLORS.grey} />
                     <TouchableOpacity style={[styles.searchIcon]} onPress={Keyboard.dismiss}>
@@ -33,13 +39,14 @@ const index = ({ navigation }) => {
             <View style={styles.popularBrandView}>
                 <View style={[styles.productHeading]}>
                     <Text style={styles.whiteText}>{translate('popularBrand')}</Text>
-                    <TouchableOpacity style={styles.viewAll}>
+                    <TouchableOpacity style={styles.viewAll} onPress={() => { navigation.navigate('AllBrands') }}>
                         <Text style={{ color: Theme.COLORS.white }}>{translate('viewAll')}</Text>
                     </TouchableOpacity>
                 </View>
                 <View style={styles.popularBrandIconView}>
                     <FlatList
                         data={data}
+
                         keyExtractor={(item, index) => index.toString()}
                         horizontal
                         showsHorizontalScrollIndicator={false}
@@ -58,7 +65,7 @@ const index = ({ navigation }) => {
 
             <View style={styles.productHeading}>
                 <Text style={styles.whiteText}>{translate('browseCategory')}</Text>
-                <TouchableOpacity style={styles.viewAll}>
+                <TouchableOpacity style={styles.viewAll} onPress={() => { navigation.navigate('AllCategory') }}>
                     <Text style={{ color: Theme.COLORS.white }}>{translate('viewAll')}</Text>
                 </TouchableOpacity>
             </View>
@@ -74,7 +81,7 @@ const index = ({ navigation }) => {
                         return (
                             <View >
                                 <TouchableOpacity style={[styles.categoryCard,
-                                index % 2 == 0 ? { marginRight: (width * 3) / 100 } : null
+                                index % 2 == 0 ? { marginRight: (width * 4) / 100 } : null
                                 ]}
                                     onPress={() => { navigation.navigate('CategoryDetails') }}>
                                     <ImageBackground borderRadius={10} source={AppImages.homeBrandLogo} style={styles.brandImg} >
@@ -82,7 +89,7 @@ const index = ({ navigation }) => {
                                             colors={[Theme.COLORS_SET[2][index % Theme.COLORS_SET[2].length], Theme.COLORS_SET[4][index % Theme.COLORS_SET[4].length]]}
                                             style={[styles.categoryCard, { position: 'absolute', opacity: 0.6 }]}>
                                         </LinearGradient>
-                                        <Text>Hair Care</Text>
+                                        <Text style={styles.categoryName}>Hair Care</Text>
                                     </ImageBackground>
                                 </TouchableOpacity>
 
@@ -107,6 +114,10 @@ const styles = StyleSheet.create({
         height: (height * 9) / 100,
         flexDirection: 'row',
         alignItems: 'center',
+    },
+    categoryName: {
+        ...Theme.fontStyles.h2Bold,
+        color: Theme.COLORS.white
     },
     whiteText: {
         ...Theme.fontStyles.h3Bold,

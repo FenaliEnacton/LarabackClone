@@ -25,7 +25,7 @@ const StoreInfo = ({ navigation }) => {
                         style={styles.fadedStyle} >
 
                         <View style={styles.header}>
-                            <TouchableOpacity style={styles.iconView} onPress={() => navigation.navigate('Search')}>
+                            <TouchableOpacity style={styles.iconView} onPress={() => navigation.goBack()}>
                                 <Icon name='close' size={15} color={Theme.COLORS.white} />
                             </TouchableOpacity>
                             <TouchableOpacity style={styles.iconView}>
@@ -48,7 +48,7 @@ const StoreInfo = ({ navigation }) => {
 
             <View style={[styles.productHeading, { marginTop: -50 }]}>
                 <Text style={styles.whiteText}>{translate('popularBrand')}</Text>
-                <TouchableOpacity style={styles.viewAll}>
+                <TouchableOpacity style={styles.viewAll} >
                     <Text style={{ color: Theme.COLORS.white }}>{translate('viewAll')}</Text>
                 </TouchableOpacity>
             </View>

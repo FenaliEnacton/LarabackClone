@@ -49,6 +49,7 @@ const CategoryDetails = ({ navigation }) => {
                         return (
                             <View style={styles.IconBox}>
                                 <BrandLogo>
+                                    <Image source={AppImages.cookieLogo} style={styles.popularBrandIcon} />
                                 </BrandLogo>
                                 <Text style={styles.brandNameText}>The marathon clothing</Text>
                             </View>
@@ -67,6 +68,11 @@ const styles = StyleSheet.create({
     fadedView: {
         height: 200,
         width: width
+    },
+    popularBrandIcon: {
+        height: '100%',
+        width: '100%',
+        borderRadius: 40,
     },
     categoryContent: {
         marginTop: 110,

@@ -73,11 +73,11 @@ const Redemption = ({ navigation }) => {
                                     return (
                                         <View style={{ marginTop: 10 }}>
                                             <TouchableOpacity style={[styles.methodCard,
-                                            index % 2 == 0 ? { marginRight: (width * 3) / 100 } : null
+                                            index % 2 == 0 ? { marginRight: (width * 4) / 100 } : null
                                             ]}
                                                 onPress={() => modalToggle()}
                                             >
-                                                <Image style={styles.methodCard}
+                                                <Image style={styles.methodImg}
                                                     resizeMode='cover'
                                                     source={AppImages.paypal} />
                                             </TouchableOpacity>
@@ -238,9 +238,14 @@ const styles = StyleSheet.create({
     methodCard: {
         height: 80,
         width: (width * 45) / 100,
-        borderRadius: 10,
-        backgroundColor: Theme.COLORS.white,
+        borderRadius: 20,
+        backgroundColor: Theme.COLORS.grey,
         marginBottom: 3
+    },
+    methodImg: {
+        height: '100%',
+        width: '100%',
+        borderRadius: 10
     }
 })
 export default Redemption

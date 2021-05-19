@@ -3,6 +3,7 @@ export const AppImages = {
     category1: require('./category1.jpg'),
     cookieBg: require('./cookieBg.jpg'),
     cookieLogo: require('./cookieLogo.jpg'),
+    melaLogo: require('./melaLogo.jpg'),
     homeBrandLogo: require('./homeBrandLogo.jpg'),
     homeMid: require('./homeMid.jpg'),
     homeProduct: require('./homeProduct.jpg'),

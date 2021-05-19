@@ -111,7 +111,9 @@ const Home = ({ navigation }) => {
                                 renderItem={({ item, index }) => {
                                     return (
                                         <View style={{ marginRight: 20 }}>
-                                            <BrandLogo></BrandLogo>
+                                            <BrandLogo>
+                                                <Image source={AppImages.melaLogo} style={styles.popularBrandIcon} />
+                                            </BrandLogo>
                                         </View>
                                     )
                                 }}
@@ -234,7 +236,11 @@ const styles = StyleSheet.create({
         //backgroundColor: 'green',
 
     },
-
+    popularBrandIcon: {
+        height: '100%',
+        width: '100%',
+        borderRadius: 40,
+    },
     popularBrandView: {
         //height: 100,
         width: width,

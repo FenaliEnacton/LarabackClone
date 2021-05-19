@@ -3,6 +3,7 @@ import { View, Text, Dimensions, StyleSheet, FlatList, TouchableOpacity, Image, 
 import LoginHeader from '../../Components/loginHeader'
 import { BlurView } from "@react-native-community/blur";
 import { translate } from '@translations';
+import { AppImages } from '@assets/Images';
 import Icon from 'react-native-vector-icons/Feather';
 import LinearButton from '../../Components/LinearButton'
 import { Theme } from '@assets/Theme';
@@ -49,13 +50,17 @@ const index = ({ navigation }) => {
                         return (
                             <View style={styles.IconBox}>
                                 <BrandLogo onPress={() => brandClickHandler(index)}>
+                                    <Image source={AppImages.melaLogo} style={styles.popularBrandIcon} />
                                     {icon.map((data, i) => {
                                         if (data == index)
                                             return <TouchableOpacity style={styles.tick} key={() => i.toString()}>
-                                                <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#4BD95A', '#4AADD7']} style={styles.imgTick}>
+                                                {/* <Image source={AppImages.cookieLogo} style={styles.popularBrandIcon} /> */}
+                                                <LinearGradient start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }} colors={['#4BD95A', '#49EACD']} style={styles.imgTick}>
                                                     <Icon name='check' size={15} />
                                                 </LinearGradient>
-                                                <BrandLogo onPress={() => removeSelection(index)}></BrandLogo>
+                                                <BrandLogo onPress={() => removeSelection(index)}>
+                                                    <Image source={AppImages.melaLogo} style={styles.popularBrandIcon} />
+                                                </BrandLogo>
                                             </TouchableOpacity>
                                     })}
                                 </BrandLogo>
@@ -160,6 +165,11 @@ const styles = StyleSheet.create({
         //backgroundColor: 'rgba(40, 40, 40, 0.9)',
         bottom: 0,
     },
+    popularBrandIcon: {
+        height: '100%',
+        width: '100%',
+        borderRadius: 40,
+    },
     buttons: {
         alignSelf: "center",
         height: (height * 6) / 100,
@@ -175,7 +185,8 @@ const styles = StyleSheet.create({
     skipView: {
         height: 20,
         width: 60,
-        justifyContent: 'center'
+        justifyContent: 'center',
+        marginBottom: 7
     }
 })
 export default index
